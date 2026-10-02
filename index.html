@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="21 of Georgia's 159 counties have no practicing dentist. County-level dentist supply from the Georgia Board of Health Care Workforce 2025 Dentist Census, with federal HPSA designations.">
+<meta name="theme-color" content="#003359">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="21 Georgia counties have no practicing dentist">
+<meta property="og:description" content="County-level dentist supply in Georgia, 2025, from the state's own workforce census.">
+<meta property="og:type" content="website">
+<meta name="format-detection" content="telephone=no">
+<style>html{color-scheme:light;-webkit-text-size-adjust:100%;text-size-adjust:100%}body{padding-top:env(safe-area-inset-top,0px);padding-bottom:calc(80px + env(safe-area-inset-bottom,0px))}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Georgia Dental Deserts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+/* Layout: macOS-style. White page, thin top bar, centered headline, segmented control, rounded light-gray bento panels. Navy accent, neutral grays, green only on campus pins. */
+:root{
+  --navy:#003359; --navy-dark:#002240;
+  --green:#44D62C;
+  --panel:#f5f5f7; --panel-2:#ececf0; --line:#e3e3e8;
+  --text:#1d1d1f; --text-2:#6e6e73; --text-3:#86868b;
+  --c0:#003359; --c1:#8b949a; --c2:#ffffff;
+  --r1:#dfe2e6; --r2:#b7c2cc; --r3:#7f93a5; --r4:#45617a; --r5:#003359;
+  --head:"Montserrat","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --radius:20px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:#fff;color:var(--text);font:17px/1.5 var(--body);margin:0;padding-inline:22px;padding-block:0 80px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+h1,h2,h3,h4{font-family:var(--head);color:var(--text);margin:0;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0}
+a{color:var(--navy)}
+
+.bar{display:flex;justify-content:space-between;align-items:center;height:52px;font-family:var(--head);font-size:12px;font-weight:600;color:var(--text-2);letter-spacing:.01em}
+.bar b{color:var(--navy);font-weight:700}
+
+.hero{text-align:center;padding:72px 0 48px;max-width:760px;margin:0 auto}
+.hero .eyebrow{font-family:var(--head);font-size:13px;font-weight:600;color:var(--text-3);letter-spacing:.02em;margin-bottom:14px}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:700;line-height:1.05;letter-spacing:-.03em}
+.hero h1 span{color:var(--navy)}
+.hero p{margin-top:20px;font-size:21px;line-height:1.45;color:var(--text-2);max-width:40ch;margin-inline:auto}
+
+.seg-wrap{display:flex;justify-content:center;margin:8px 0 28px}
+.seg{display:inline-flex;background:var(--panel-2);border-radius:14px;padding:4px;gap:2px}
+.seg button{font:inherit;font-family:var(--head);font-size:14px;font-weight:600;padding:10px 20px;border:0;border-radius:11px;background:transparent;color:var(--text-2);cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .18s,box-shadow .18s,color .18s}
+.seg button b{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.02em}
+.seg button i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.06)}
+.seg button:focus-visible,.tabs button:focus-visible,svg path:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+@media (max-width:640px){.seg{flex-direction:column;width:100%}.seg button{justify-content:space-between}}
+
+.panel{background:var(--panel);border-radius:var(--radius);padding:32px}
+.panel.white{background:#fff;border:1px solid var(--line)}
+.panel h3{font-size:22px;font-weight:700;letter-spacing:-.02em}
+.panel .sub{color:var(--text-2);margin-top:4px;font-size:16px}
+@media (max-width:640px){.panel{padding:22px;border-radius:16px}}
+
+.maps{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px;align-items:stretch}
+@media (max-width:860px){.maps{grid-template-columns:minmax(0,1fr)}}
+.maps>*,.bento>*,.two>*{min-width:0}
+.panel{min-width:0}
+.mapbox{position:relative;margin-top:16px}
+svg#map{width:100%;height:auto;display:block}
+svg#map path.c{stroke:#d9dce0;stroke-width:.7;cursor:pointer;transition:fill-opacity .2s}
+svg#map path.c.dim{fill-opacity:.25}
+svg#map path.c.dim[style*='#ffffff']{fill-opacity:1}
+svg#map path.c:hover,svg#map path.c.hl{stroke:var(--navy-dark);stroke-width:1.8;fill-opacity:1}
+svg#map .outline{fill:none;stroke:#9aa1a8;stroke-width:.8}
+svg#map text.cl{font:600 6.4px var(--head);fill:var(--navy-dark);stroke:#fff;stroke-width:2.2px;paint-order:stroke;text-anchor:middle;pointer-events:none}
+svg#map text.pin{font:600 8px var(--head);fill:var(--text);stroke:#fff;stroke-width:3px;paint-order:stroke;pointer-events:none}
+.maphead{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tabs{display:inline-flex;background:var(--panel-2);border-radius:9px;padding:3px}
+.tabs button{font-family:var(--head);font-size:12px;font-weight:600;padding:6px 12px;border:0;border-radius:7px;background:transparent;color:var(--text-2);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px;font-size:14px;color:var(--text-2)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;vertical-align:-1px;margin-right:6px;border:1px solid #d9dce0}
+
+.tip{position:absolute;pointer-events:none;background:rgba(255,255,255,.96);border-radius:12px;padding:12px 14px;font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,.08),0 12px 32px rgba(0,0,0,.12);min-width:190px}
+.tip strong{display:block;font-family:var(--head);font-size:14px;color:var(--text)}
+.tip dl{display:grid;grid-template-columns:auto auto;gap:2px 16px;margin:6px 0 0}
+.tip dt{color:var(--text-2)} .tip dd{margin:0;text-align:right;font-variant-numeric:tabular-nums;font-weight:600}
+
+.listpanel{display:flex;flex-direction:column}
+.listhead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.listhead h3{font-size:18px}
+.listhead span{font-size:13px;color:var(--text-3)}
+.tscroll{overflow:auto;max-height:520px;margin-inline:-8px;padding-inline:8px}
+table{width:100%;border-collapse:collapse}
+th{font-family:var(--head);font-size:11px;font-weight:600;color:var(--text-3);text-align:left;padding:0 10px 8px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:#fff;letter-spacing:.02em;text-transform:uppercase}
+td{padding:9px 10px 9px 0;border-bottom:1px solid var(--panel-2);font-variant-numeric:tabular-nums;font-size:15px}
+th.r,td.r{text-align:right;padding-right:0}
+tbody tr[data-n]{cursor:pointer}
+tbody tr[data-n]:hover td{background:var(--panel)}
+tbody tr.sel td{font-weight:600;color:var(--navy)}
+tr.total td{font-weight:600;border-bottom:0;border-top:1px solid var(--line);color:var(--text)}
+.detail{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:15px}
+.detail h4{font-size:16px;font-weight:700}
+.detail p{color:var(--text-2);margin-top:2px}
+.detail dl{display:grid;grid-template-columns:repeat(4,auto);gap:4px 20px;margin:12px 0 0}
+@media (max-width:560px){.detail dl{grid-template-columns:repeat(2,auto)}}
+.detail dt{color:var(--text-3);font-size:13px} .detail dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+
+section{margin-top:72px}
+.sec-head{text-align:center;max-width:640px;margin:0 auto 32px}
+.sec-head h2{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.sec-head p{color:var(--text-2);margin-top:12px;font-size:19px}
+
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.bento>*{grid-column:span 3}
+.bento>.third{grid-column:span 2}
+.bento>.full{grid-column:span 6}
+@media (max-width:860px){.bento{grid-template-columns:minmax(0,1fr)}.bento>*,.bento>.third,.bento>.full{grid-column:auto}}
+.panel svg.chart{width:100%;height:auto;display:block;overflow:hidden;margin-top:20px}
+.panel svg.chart text{font-family:var(--body);font-size:13px;fill:var(--text)}
+.panel svg.chart text.n{font-family:var(--head);font-weight:600;fill:var(--text);font-size:12px}
+.panel svg.chart text.m{fill:var(--text-3);font-size:12px}
+.stat{display:flex;flex-direction:column;justify-content:flex-end;min-height:200px}
+.stat b{font-family:var(--head);font-weight:700;font-size:56px;line-height:1;letter-spacing:-.04em;color:var(--navy);font-variant-numeric:tabular-nums}
+.stat b small{font-size:20px;font-weight:600;letter-spacing:-.01em;color:var(--text-3);margin-left:6px}
+.stat span{margin-top:12px;font-size:16px;line-height:1.45;color:var(--text-2)}
+
+.trend svg text{font:600 14px var(--head);fill:var(--text-3)}
+.trend svg .v{fill:var(--text);font-size:15px}
+.two{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:center}
+@media (max-width:860px){.two{grid-template-columns:minmax(0,1fr)}}
+.trend td{font-size:14px;padding:7px 8px 7px 0}
+.trend th{position:static;background:transparent}
+
+
+.hbars{display:grid;gap:10px;margin-top:16px}
+.hrow{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:center;font-size:14px}
+.hrow .l{text-align:right;color:var(--text);font-weight:600;font-family:var(--head);font-size:12px}
+.hrow .t{position:relative;height:18px;background:transparent}
+.hrow .b{height:18px;border-radius:4px;background:var(--navy)}
+.hrow .v{position:absolute;left:0;top:0;line-height:18px;white-space:nowrap;font-family:var(--head);font-size:12px;font-weight:600;color:var(--text);padding-left:8px}
+.hrow .v.in{transform:translateX(-100%);padding-left:0;padding-right:8px;color:#fff}
+.hrow .v.in.dk{color:var(--text)}
+.hrow .ref{position:absolute;top:-4px;bottom:-4px;border-left:1.5px dashed #1d1d1f}
+@media (max-width:560px){.hrow{grid-template-columns:1fr;gap:4px}.hrow .l{text-align:left}}
+.cmpgrid{display:grid;gap:22px;margin-top:20px}
+.cmprow{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;gap:16px 24px;align-items:center}
+@media (max-width:760px){.cmprow{grid-template-columns:1fr;gap:8px}}
+.cmprow .name{font-family:var(--head);font-weight:600;font-size:14px}
+.cmprow .src{font-size:13px;color:var(--text-3);margin-top:2px}
+.cmprow .pair{display:grid;gap:4px}
+.cmprow .pr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;font-size:13px}
+.cmprow .pr i{display:block;height:14px;border-radius:3px}
+.cmprow .pr b{font-family:var(--head);font-weight:600;font-size:12px;white-space:nowrap}
+.cmprow .pct{font-family:var(--head);font-weight:600;font-size:14px;text-align:right;white-space:nowrap}
+.cmprow .pct small{display:block;font-weight:500;color:var(--text-3);font-size:12px}
+@media (max-width:760px){.cmprow .pct{text-align:left}}
+@media (max-width:520px){svg#map text.cl{display:none}}
+@media (hover:none){svg#map path.c:hover{stroke:#fff;stroke-width:.8}}
+
+.hrow .l.w{font-family:var(--body);font-weight:400;font-size:14px}
+.hrow .b.g{background:var(--c1)} .hrow .b.k{background:#1d1d1f} .hrow .b.lt{background:#c9ced4}
+.waffles{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:20px}
+@media (max-width:420px){.waffles{grid-template-columns:1fr}}
+.waffle h4{font-family:var(--head);font-size:12px;font-weight:600;margin-bottom:8px}
+.waffle .g{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;max-width:200px}
+.waffle .g i{display:block;aspect-ratio:1;border-radius:2px;background:#e3e5e9}
+.waffle .g i.on{background:var(--navy)}
+.waffle p{font-size:13px;color:var(--text-3);margin-top:8px}
+@media (max-width:480px){.tscroll table{min-width:360px}}
+.notes{margin-top:72px;padding-top:28px;border-top:1px solid var(--line);font-size:13px;color:var(--text-3);line-height:1.55}
+.notes ol{margin:10px 0 0;padding-left:18px;display:grid;gap:8px;max-width:92ch}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div class="bar"><span><b>The Dental College of Georgia</b> · Augusta University</span><span>Georgia dentist supply by county, 2025</span></div>
+
+  <div class="hero">
+    <div class="eyebrow">Georgia Board of Health Care Workforce · 2025 Dentist Census</div>
+    <h1>21 counties.<br><span>No dentist.</span></h1>
+    <p>One in eight Georgia counties has no practicing dentist. Eighteen more depend on a single one. Statewide, Georgia has 51.0 dentists per 100,000 residents; the national rate is 60.4.</p>
+  </div>
+
+  <div class="seg-wrap">
+    <div class="seg" role="group" aria-label="County group">
+      <button data-g="0" aria-pressed="true"><i style="background:var(--c0)"></i><b>21</b> counties with no dentist</button>
+      <button data-g="1" aria-pressed="false"><i style="background:var(--c1)"></i><b>18</b> with one dentist</button>
+      <button data-g="2" aria-pressed="false"><i style="background:var(--c2);border:1px solid #cfd3d8"></i><b>120</b> with two or more</button>
+    </div>
+  </div>
+
+  <div class="maps">
+    <div class="panel">
+      <div class="maphead">
+        <div><h3 id="maptitle">Counties with no dentist</h3><p class="sub" id="mapsub">164,375 residents · 1.5% of Georgians</p></div>
+        <div class="tabs" role="group" aria-label="Map shading">
+          <button id="v-none" aria-pressed="true">By group</button>
+          <button id="v-rate" aria-pressed="false">Per 100,000</button>
+        </div>
+      </div>
+      <div class="mapbox" id="mapbox">
+        <svg id="map" role="img" aria-label="Map of Georgia counties shaded by dentist supply"></svg>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="legend" id="legend"></div>
+    </div>
+    <div class="panel white listpanel">
+      <div class="listhead"><h3 id="listtitle"></h3><span id="listsub"></span></div>
+      <div class="tscroll"><table id="tl"><thead><tr><th>County</th><th class="r">Population</th><th class="r">Dentists</th><th class="r">Per 100k</th></tr></thead><tbody></tbody></table></div>
+      <div class="detail" id="detail" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="sec-head"><h2>By the numbers.</h2><p>Every figure is calculated from the county table in the state's 2025 report.</p></div>
+    <div class="bento">
+      <div class="panel full">
+        <h3>Georgia and the nation</h3>
+        <p class="sub">Three published comparisons, each measuring something slightly different. All three put Georgia well below the national rate.</p>
+        <div class="cmpgrid" id="usga"></div><p class="sub" id="usganote" style="margin-top:18px;font-size:14px"></p>
+      </div>
+      <div class="panel"><h3>Residents for every one dentist</h3><p class="sub">One scale, from the best-supplied county to the thinnest that still has a dentist.</p><div class="hbars" id="ratio"></div></div>
+      <div class="panel"><h3>Where the dentists are</h3><p class="sub">Share of Georgia's dentists against share of its population.</p><div class="cmpgrid" id="share"></div></div>
+      <div class="panel"><h3>Counties by dentists per 100,000</h3><p class="sub">The national rate is 60.4. Fourteen Georgia counties reach it.</p><div class="hbars" id="dist"></div><p class="sub" style="margin-top:14px;font-size:13px">Dentists per 100,000 residents. State rate 51.0; national rate 60.4.</p></div>
+      <div class="panel"><h3>The 39 thinnest counties</h3><p class="sub">Each square is 1% of Georgia's population, or 1% of its dentists.</p><div class="waffles" id="waffle"></div></div>
+      <div class="panel stat third"><b>139<small>of 159</small></b><span>counties fall below the state rate of 51.0 dentists per 100,000. The median county has 26.0.</span></div>
+      <div class="panel stat third"><b>79<small>counties</small></b><span>have no dental specialist of any kind. 1,168,771 people live in them.</span></div>
+      <div class="panel stat third"><b>1.25<small>million</small></b><span>Georgians, 11% of the state, live in 63 counties with fewer than 20 dentists per 100,000.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>The federal view.</h2><p>HRSA designates Dental Health Professional Shortage Areas. Georgia meets a smaller share of its designated dental need than any neighboring state.</p></div>
+    <div class="bento">
+      <div class="panel"><h3>Share of designated dental need met</h3><p class="sub">HRSA, as of December 31, 2025. Need is the number of dentists required to remove the shortage designations.</p><div class="hbars" id="hpsa"></div></div>
+      <div class="panel"><h3>Georgia's dental shortage designations</h3><p class="sub">HRSA Bureau of Health Workforce and the Georgia State Office of Rural Health.</p>
+        <table style="margin-top:20px"><tbody>
+          <tr><td>Dental HPSA designations in Georgia</td><td class="r"><b>186</b></td></tr>
+          <tr><td>Georgians living in a designated dental HPSA</td><td class="r"><b>1,924,209</b></td></tr>
+          <tr><td>Additional dentists needed to remove the designations</td><td class="r"><b>402</b></td></tr>
+          <tr><td>Counties designated as whole-county geographic dental HPSAs</td><td class="r"><b>34</b></td></tr>
+          <tr><td>Counties with a low-income population-group designation</td><td class="r"><b>87</b></td></tr>
+          <tr><td>Counties with a partial-county designation</td><td class="r"><b>3</b></td></tr>
+          <tr><td>Counties with any dental shortage designation</td><td class="r"><b>124 of 159</b></td></tr>
+        </tbody></table>
+        <p class="sub" style="margin-top:14px;font-size:14px">A county is designated only when the state applies for it and the designation is maintained, so a county without one is not necessarily adequately served.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>One retirement away.</h2><p>Eighteen counties have exactly one practicing dentist: 204,939 residents, 18 dentists, one for every 11,386 people. Nearly six times the statewide ratio. One retirement, relocation, or closure creates a new county with no dentist.</p></div>
+    <div class="panel"><div class="hbars" id="onebars"></div><p class="sub" style="margin-top:16px">In Banks County, the only dentist is a specialist. There is no general dentist.</p></div>
+  </section>
+
+  <section class="trend">
+    <div class="sec-head"><h2>Little change in ten years.</h2><p>Counties without a dentist in each edition of the state report. No report was issued for 2023.</p></div>
+    <div class="panel two">
+      <svg class="chart" id="trend" viewBox="0 0 520 190" role="img" aria-label="Counties without a dentist: 2015, 19; 2017, 23; 2019, 21; 2021, 22; 2025, 21" style="margin-top:0"></svg>
+      <div>
+        <table aria-label="Statewide totals by report year">
+          <thead><tr><th>Report year</th><th class="r">Dentists</th><th class="r">Per 100k</th><th class="r">Counties with none</th></tr></thead>
+          <tbody>
+            <tr><td>2015</td><td class="r">4,454</td><td class="r">43.6</td><td class="r">19</td></tr>
+            <tr><td>2017</td><td class="r">4,693</td><td class="r">45.5</td><td class="r">23</td></tr>
+            <tr><td>2019</td><td class="r">5,143</td><td class="r">48.4</td><td class="r">21</td></tr>
+            <tr><td>2021</td><td class="r">5,212</td><td class="r">48.7</td><td class="r">22</td></tr>
+            <tr><td>2025</td><td class="r">5,704</td><td class="r">51.0</td><td class="r">21</td></tr>
+          </tbody>
+        </table>
+        <p class="sub" style="margin-top:12px;font-size:14px">Since 2021, four counties gained a dentist (Banks, Burke, Chattahoochee, and Wheeler) and three lost theirs (Crawford, Glascock, and Randolph).</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="notes">
+    <strong style="font-family:var(--head);color:var(--text-2)">Notes and sources</strong>
+    <ol>
+      <li>Georgia Board of Health Care Workforce. <a href="https://healthcareworkforce.georgia.gov/document/document/2025-dentist-workforce-report/download" target="_blank" rel="noopener">Dentist Workforce Report 2025</a>, based on 2024 to 2025 licensure renewals and new licensees. County figures, statewide totals, and the national rate of 60.4 (ADA, 2023) are taken from this report. Earlier counts from the <a href="https://healthcareworkforce.georgia.gov/document/2015-dentist-workforce-report/download" target="_blank" rel="noopener">2015</a>, <a href="https://healthcareworkforce.georgia.gov/document/2017-dentist-workforce-report/download" target="_blank" rel="noopener">2017</a>, <a href="https://healthcareworkforce.georgia.gov/document/publication/2019-dentist-workforce-reportpdf/download" target="_blank" rel="noopener">2019</a>, and <a href="https://healthcareworkforce.georgia.gov/document/document/2021-dentist-workforce-reportpdf/download" target="_blank" rel="noopener">2021</a> editions.</li>
+      <li>Population figures are U.S. Census Bureau 2024 estimates as printed in the report. County assignment uses the address each dentist reported, which may be a practice or another public address. "Dentists" includes general dentists and specialists. Pierce and Pike counties appear with identical figures in the published table and are shown as published.</li>
+      <li>American Dental Association, Health Policy Institute. <a href="https://www.ada.org/-/media/project/ada-organization/ada/ada-org/files/resources/research/hpi/US_dentist_workforce_2025.pdf" target="_blank" rel="noopener">U.S. Dentist Workforce, 2025</a> (2024 data): Georgia 55.1 and United States 59.5 dentists per 100,000.</li>
+      <li>America's Health Rankings, United Health Foundation. <a href="https://www.americashealthrankings.org/explore/measures/dental_provider/GA" target="_blank" rel="noopener">Dental Care Providers, Georgia</a> (NPPES, 2025): general dentists per 100,000, Georgia 48.3, United States 66.3, Georgia ranked 46th.</li>
+      <li>Health Resources and Services Administration, Bureau of Health Workforce. Dental Health Professional Shortage Area designations as of December 31, 2025, as compiled by <a href="https://www.kff.org/other-health/state-indicator/dental-care-health-professional-shortage-areas-hpsas/" target="_blank" rel="noopener">KFF</a>. Designation lists as of April 30, 2026 published in the <a href="https://www.federalregister.gov/documents/2026/07/01/2026-13309/lists-of-designated-primary-medical-care-mental-health-and-dental-health-professional-shortage-areas" target="_blank" rel="noopener">Federal Register, July 1, 2026</a>, and available through the <a href="https://data.hrsa.gov/topics/health-workforce/shortage-areas/dashboard" target="_blank" rel="noopener">HRSA Data Warehouse</a>. Scoring method: <a href="https://bhw.hrsa.gov/workforce-shortage-areas/shortage-designation/scoring" target="_blank" rel="noopener">HRSA, Scoring Shortage Designations</a>.</li>
+      <li>Georgia Department of Community Health, State Office of Rural Health. <a href="https://dch.georgia.gov/document/document/dental-health-professional-shortage-areas-map/download" target="_blank" rel="noopener">Dental Health Professional Shortage Areas map</a>: 34 geographic single-county, 87 low-income population-group, 3 partial-county, 35 non-designated counties.</li>
+      <li>Centers for Disease Control and Prevention, Preventing Chronic Disease (2024). <a href="https://www.cdc.gov/Pcd/issues/2024/23_0315.htm" target="_blank" rel="noopener">Congruence Between County Dental HPSA Designations and the Social Vulnerability Index</a>: 40 high-vulnerability counties nationally, mostly in the South, carry no HPSA designation.</li>
+      <li>The "about 18 counties" figure cited at the April 2026 Savannah groundbreaking has no published source; the state's count is 21.</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+const SHIELD='data:image/png;base64,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';
+const GEO = {"W":560,"H":640,"outline":"M57.2,443.3L57.2,440.9L55.7,432.9L57.0,427.7L62.9,419.4L65.1,412.5L66.4,402.8L65.8,392.9L71.2,386.9L77.0,384.6L76.2,381.7L81.6,380.2L84.9,375.8L80.1,371.1L72.7,367.7L74.9,360.2L77.0,354.2L73.4,349.9L72.7,342.2L70.7,337.8L63.8,328.9L61.5,323.8L58.8,309.3L59.7,306.4L54.4,301.1L56.1,297.0L52.5,293.2L47.7,260.9L47.4,258.0L41.6,217.5L40.5,210.0L37.2,186.9L32.2,153.1L31.1,144.7L29.0,128.8L24.6,100.8L19.6,68.5L18.2,59.7L17.5,55.0L12.9,22.8L10.5,6L25.2,6.4L37.6,6.6L48.3,6.5L80.2,6.7L98.9,6.9L102.5,7.0L120.1,7.0L153.2,7.3L174.7,7.6L188.2,7.7L195.8,7.7L231.3,7.9L238.9,7.1L246.4,7.0L287.9,6.0L286.7,14.4L274.4,22.3L264.0,34.6L264.4,38.8L260.8,44.6L262.4,48.6L274.5,58.8L281.3,59.6L288.5,68.9L294.5,74.4L301.0,76.6L311.0,75.6L314.2,77.0L317.5,84.4L318.7,91.9L323.5,95.3L325.6,102.3L329.3,107.2L329.3,113.1L332.2,121.0L337.0,123.8L340.3,131.5L346.0,137.1L346.0,139.4L349.7,147.2L354.2,148.9L361.9,157.2L373.7,163.1L385.5,174.4L388.9,183.3L391.4,190.8L396.7,195.2L400.8,195.2L410.6,202.1L412.2,203.8L416.0,210.3L422.1,213.2L423.8,216.0L421.0,221.0L422.7,225.5L421.1,229.3L432.6,238.7L431.1,242.2L436.4,247.0L439.2,245.5L442.1,248.6L440.1,251.1L443.5,256.3L454.6,262.5L458.3,262.4L466.5,268.9L472.7,273.8L470.8,281.6L475.9,289.0L476.8,294.7L480.5,296.4L480.7,306.2L482.4,309.4L480.5,315.2L482.9,316.1L484.7,321.6L481.9,325.0L485.3,329.5L493.1,334.3L497.7,334.5L498.1,337.4L507.8,346.7L506.2,350.6L512.6,362.7L514.3,362.2L516.9,371.0L512.9,376.9L514.2,378.9L517.6,383.9L516.0,387.0L518.3,394.1L527.0,397.9L531.5,395.8L540.7,403.9L544.5,404.2L549.4,405.5L547.6,413.0L541.9,416.5L537.7,414.9L535.4,420.5L539.5,421.3L533.1,428.5L524.4,426.0L523.3,432.6L527.8,433.7L524.3,440.7L517.4,447.1L514.5,446.7L509.5,446.8L511.2,450.1L517.5,450.7L517.3,460.5L512.9,469.8L510.4,468.2L503.0,471.1L503.1,473.6L510.1,472.3L512.6,475.1L503.4,490.5L501.1,501.1L502.5,505.4L500.2,517.5L494.9,520.1L491.7,527.1L488.0,527.5L488.1,535.8L486.6,542.1L483.3,543.5L477.5,548.9L483.0,551.6L487.5,548.7L488.1,558.1L481.8,577.0L484.1,585.1L478.6,583.0L472.8,584.8L465.6,582.9L451.8,580.9L448.8,578.0L441.2,574.9L434.1,574.7L430.3,571.0L424.9,570.1L421.2,577.1L416.2,576.2L417.9,579.0L414.6,580.9L415.1,586.6L413.5,593.6L418.7,604.1L417.6,618.0L415.2,623.5L415.7,630.2L414.0,633.3L407.7,632.6L399.8,634L395.1,625.2L396.2,616.9L393.2,613.9L392.3,607.3L394.4,605.6L370.5,604.1L365.9,603.8L351.2,602.9L339.1,602.2L286.7,599.0L270.8,597.9L261.2,597.2L231.5,595.3L216.0,594.4L185.4,592.4L176.2,591.8L153.2,590.3L141.9,589.7L85.5,586.2L84.3,583.9L79.7,580.5L77.3,571.7L76.6,562.1L72.1,555.9L69.8,546.7L67.4,536.5L66.2,532.1L58.0,521.4L59.4,515.1L57.4,509.2L60.4,504.9L60.1,497.6L63.5,488.3L62.8,483.3L65.8,476.7L64.7,462.7L57.0,452.5L57.2,443.3","counties":[{"n":"Haralson","pop":32404,"g":5,"t":5,"d":"M32.2,153.1L51.9,153.7L51.9,152.8L70.1,153.3L71.7,153.4L71.1,165.9L69.9,165.8L69.7,179.0L63.2,181.6L59.6,180.9L42.5,187.1L37.2,186.9Z","cx":51.8,"cy":168},{"n":"Bleckley","pop":12626,"g":2,"t":2,"d":"M244.8,351.3L275.6,333.4L285.9,355.1L281.8,351.2L266.6,366.3L269.1,368.6L262.1,375.7L244.8,358.1Z","cx":264.1,"cy":353.7},{"n":"Sumter","pop":28972,"g":11,"t":11,"d":"M137.8,394.0L137.8,389.5L166.2,390.8L166.3,381.2L171.6,381.5L171.6,387.2L177.4,386.5L183.9,389.3L183.1,391.7L188.0,399.5L191.3,408.3L195.8,419.6L195.7,424.7L147.9,423.5L147.8,429.3L136.0,416.5Z","cx":164.5,"cy":407.1},{"n":"Meriwether","pop":21439,"g":3,"t":3,"d":"M89.8,250.2L91.1,245.9L131.0,246.6L131.3,251.7L128.8,260.1L126.6,275.3L127.8,280.5L127.7,288.3L129.7,292.5L122.7,297.5L107.6,297.4L101.9,294.0L89.7,293.4L89.4,280.2Z","cx":109.4,"cy":270.8},{"n":"Douglas","pop":151887,"g":42,"t":59,"d":"M86.4,170.3L89.2,171.2L106.6,169.5L106.7,167.1L118.0,167.4L123.1,175.8L114.6,183.8L114.1,186.6L103.1,190.9L96.6,198.5L85.6,198.4Z","cx":101.3,"cy":181.3},{"n":"Coweta","pop":158233,"g":46,"t":65,"d":"M92.0,206.8L118.0,207.2L119.2,208.4L117.0,217.0L121.4,228.0L127.5,231.1L131.4,241.7L131.0,246.6L91.1,245.9L89.8,250.2L89.9,245.8L81.4,245.5L73.2,218.2L76.5,214.1L81.7,216.8L85.0,212.5L91.2,209.3Z","cx":101.6,"cy":228.4},{"n":"Clarke","pop":129995,"g":53,"t":67,"d":"M240.4,146.2L244.4,143.3L260.1,136.2L271.4,141.8L269.8,149.5L273.5,154.6L269.5,162.3L264.2,161.3L253.3,151.6L243.6,151.0Z","cx":259.6,"cy":148.3},{"n":"Bartow","pop":117508,"g":25,"t":37,"d":"M70.9,127.4L71.5,111.4L73.5,111.5L74.2,93.4L76.2,93.5L75.9,87.3L81.9,88.5L81.9,86.4L106.4,87.1L106.4,84.9L115.6,85.0L115.4,110.1L114.5,113.5L114.3,130.4L105.5,130.1L84.9,129.4L70.8,129.1Z","cx":94.4,"cy":108.5},{"n":"Decatur","pop":29391,"g":5,"t":7,"d":"M84.3,583.9L87.3,577.9L94.4,574.0L98.3,561.4L99.0,541.6L101.5,537.8L111.5,538.1L111.6,536.5L123.2,536.8L127.4,536.9L142.8,536.9L141.9,589.7L85.5,586.2Z","cx":118.9,"cy":564},{"n":"Jones","pop":29047,"g":5,"t":5,"d":"M208.6,259.2L239.1,253.9L252.6,252.0L254.2,262.8L260.8,287.1L255.0,290.9L242.8,298.1L233.0,292.3L226.5,292.3L222.0,288.4L220.4,283.5L216.3,268.5Z","cx":237.6,"cy":273.8},{"n":"Tift","pop":41708,"g":9,"t":13,"d":"M227.0,471.1L227.0,467.3L244.4,467.5L244.4,470.8L253.6,473.1L256.5,476.0L258.5,482.8L263.1,483.6L259.4,485.1L259.4,493.7L251.9,500.6L249.0,503.8L242.8,503.7L226.6,503.2Z","cx":241.5,"cy":486.2},{"n":"Morgan","pop":21940,"g":8,"t":9,"d":"M224.2,196.3L243.6,166.4L246.9,168.5L250.5,179.3L255.0,182.5L259.0,188.2L261.8,195.8L270.4,204.9L269.2,211.6L240.8,218.3L223.8,205.8Z","cx":245.5,"cy":197.2},{"n":"Barrow","pop":96294,"g":22,"t":25,"d":"M208.6,124.3L214.6,132.8L231.5,135.3L237.2,137.4L240.4,146.2L227.9,154.4L224.7,152.8L215.0,155.9L210.9,151.1L206.5,143.7L202.9,141.0Z","cx":220.6,"cy":142.4},{"n":"Calhoun","pop":5441,"g":3,"t":3,"d":"M91.9,479.3L92.5,463.1L111.1,463.3L112.0,460.2L119.0,463.3L123.5,463.3L134.7,463.3L133.8,468.1L139.1,485.7L137.0,488.5L134.9,486.0L129.9,489.6L112.9,488.6L95.5,488.0L94.8,479.2Z","cx":114.8,"cy":475.8},{"n":"Madison","pop":32771,"g":1,"t":2,"d":"M255.3,114.9L260.5,111.3L266.9,105.8L269.8,107.9L281.0,109.3L287.8,104.5L291.9,111.2L289.1,118.1L292.7,120.6L296.4,128.1L303.3,135.6L295.2,139.4L286.7,135.1L275.9,141.5L271.4,141.8L260.1,136.2L257.3,134.8L260.5,125.8L259.7,119.4Z","cx":277.1,"cy":124.3},{"n":"Dooly","pop":11186,"g":0,"t":0,"d":"M183.9,389.3L191.0,378.8L198.8,374.5L204.6,373.1L231.3,373.5L232.1,373.5L232.1,396.5L231.7,408.7L191.3,408.3L188.0,399.5L183.1,391.7Z","cx":210.2,"cy":391.3},{"n":"McDuffie","pop":21764,"g":7,"t":7,"d":"M359.4,189.9L365.5,188.3L363.9,190.1L367.2,196.9L364.4,202.1L370.5,204.7L368.5,206.6L370.6,213.2L375.9,219.5L375.5,221.5L380.9,228.3L374.0,234.1L370.8,234.2L363.0,230.4L356.5,230.3L352.4,225.9L351.6,220.3L347.9,215.7L340.4,194.3L344.0,193.8L347.6,188.6L352.1,190.1L356.5,187.2Z","cx":359.7,"cy":211.1},{"n":"Grady","pop":26271,"g":7,"t":7,"d":"M142.8,536.9L172.8,537.3L172.7,551.9L177.2,560.6L176.2,591.8L153.2,590.3L141.9,589.7Z","cx":159.1,"cy":564.8},{"n":"Fannin","pop":25854,"g":10,"t":10,"d":"M120.1,7.0L153.2,7.3L174.7,7.6L169.1,12.3L177.0,21.2L173.0,25.8L173.3,32.1L178.5,32.9L177.3,42.9L171.2,53.6L167.6,59.7L166.8,57.6L167.2,54.8L160.4,51.3L160.5,44.1L153.8,31.9L141.8,25.1L119.9,25.1Z","cx":153.5,"cy":24.3},{"n":"Bibb","pop":157056,"g":62,"t":92,"d":"M199.9,297.5L220.4,283.5L222.0,288.4L226.5,292.3L233.0,292.3L242.8,298.1L245.7,301.0L235.4,312.6L232.6,312.2L231.8,319.3L233.4,322.6L225.6,321.2L221.5,318.8L217.4,318.5L209.3,313.6L199.9,301.5Z","cx":221.8,"cy":303.4},{"n":"Pulaski","pop":10180,"g":1,"t":1,"d":"M231.3,373.5L241.6,358.1L244.8,358.1L262.1,375.7L258.8,378.7L268.3,388.4L264.6,392.2L266.7,394.5L263.0,398.3L260.5,395.8L253.9,394.5L251.8,396.6L232.1,396.5L232.1,373.5Z","cx":247.2,"cy":381},{"n":"Butts","pop":27127,"g":3,"t":3,"d":"M176.2,236.6L181.0,235.0L184.3,228.0L192.1,226.2L190.9,221.8L196.6,216.9L197.8,220.5L203.4,227.2L205.8,232.5L208.7,244.3L207.8,252.7L203.8,249.8L183.0,249.5L173.7,249.5L173.7,242.7L177.8,238.2Z","cx":192.8,"cy":238.2},{"n":"Lamar","pop":20690,"g":1,"t":1,"d":"M159.8,251.2L162.2,252.5L173.6,252.7L173.7,249.5L183.0,249.5L182.9,273.0L181.6,286.3L173.4,286.1L173.9,278.3L156.8,278.0L159.3,271.5Z","cx":172,"cy":266.6},{"n":"Evans","pop":10869,"g":3,"t":4,"d":"M419.6,374.9L428.6,374.0L437.3,378.8L441.6,390.3L444.6,396.7L448.7,398.8L443.9,404.4L429.5,404.3L418.7,400.3L413.4,373.6Z","cx":429.4,"cy":389.9},{"n":"Atkinson","pop":8435,"g":0,"t":0,"d":"M285.9,491.1L307.1,491.3L307.1,493.3L320.8,493.3L323.3,498.5L345.3,498.3L345.0,510.4L337.1,510.0L337.2,517.4L340.5,522.8L305.6,523.0L296.9,523.0L296.4,516.5L298.5,510.7L295.5,503.3L289.3,498.2Z","cx":316.4,"cy":507.6},{"n":"Miller","pop":5824,"g":1,"t":1,"d":"M112.2,512.2L124.3,512.8L123.2,536.8L111.6,536.5L111.5,538.1L101.5,537.8L79.5,537.1L80.2,512.3Z","cx":101.7,"cy":524.9},{"n":"Crisp","pop":19468,"g":6,"t":6,"d":"M191.3,408.3L231.7,408.7L231.6,432.4L231.6,439.1L209.7,439.2L204.8,435.3L194.0,433.1L195.7,424.7L195.8,419.6Z","cx":213.7,"cy":423},{"n":"Coffee","pop":43851,"g":14,"t":18,"d":"M285.5,484.0L289.2,483.1L295.4,471.4L295.4,465.1L300.3,461.8L302.4,456.7L302.3,442.1L304.4,440.5L317.2,441.8L320.9,437.3L321.0,456.8L345.0,456.5L345.1,472.0L348.9,472.1L348.5,484.1L345.2,484.1L345.3,498.3L323.3,498.5L320.8,493.3L307.1,493.3L307.1,491.3L285.9,491.1Z","cx":319.6,"cy":473.4},{"n":"Ben Hill","pop":16945,"g":8,"t":8,"d":"M246.5,433.3L277.9,433.6L281.6,433.1L286.2,437.7L292.4,438.0L298.6,442.5L302.3,442.1L302.4,456.7L281.7,456.1L281.7,459.7L271.3,459.3L271.3,456.0L264.7,455.9L264.7,445.5L249.8,445.4Z","cx":276.6,"cy":445.1},{"n":"Chattahoochee","pop":8548,"g":1,"t":1,"d":"M74.9,360.2L79.0,360.5L86.4,355.9L99.6,354.7L104.6,343.0L107.9,341.5L114.5,339.4L112.4,344.8L111.6,380.3L81.6,380.2L84.9,375.8L80.1,371.1L72.7,367.7Z","cx":97.2,"cy":364.7},{"n":"Heard","pop":12119,"g":0,"t":0,"d":"M41.6,217.5L73.2,218.2L81.4,245.5L64.6,252.5L62.2,249.3L60.9,253.5L47.4,258.0Z","cx":60.1,"cy":235.5},{"n":"Newton","pop":124010,"g":19,"t":25,"d":"M182.8,205.8L195.9,188.8L197.9,180.6L197.5,176.3L215.3,189.5L218.1,189.6L224.2,196.3L223.8,205.8L224.6,211.1L217.7,212L213.6,215.8L207.5,217.9L207.1,223.8L203.4,227.2L197.8,220.5L196.6,216.9L194.1,211.8L184.4,209.5Z","cx":205.1,"cy":202.1},{"n":"DeKalb","pop":770307,"g":324,"t":476,"d":"M156.9,147.1L158.9,152.3L165.3,158.7L170.5,161.4L179.8,171.7L185.4,174.9L181.8,178.5L174.8,193.6L167.1,189.4L160.2,191.4L156.2,189.1L148.5,189.0L149.3,146.5Z","cx":162.8,"cy":172.8},{"n":"White","pop":29668,"g":8,"t":9,"d":"M204.9,43.7L207.7,42.7L208.1,36.1L213.3,34.2L224.1,33.2L230.0,38.2L230.8,42.4L226.4,52.3L228.8,57.3L228.8,63.1L231.6,66.7L226.0,73.5L206.0,73.1L207.2,69.5L203.6,67.0L202.8,50.1Z","cx":216.9,"cy":54.2},{"n":"Floyd","pop":101390,"g":26,"t":40,"d":"M24.6,100.8L33.1,101.0L39.3,89.7L56.7,81.1L65.0,60.7L69.4,60.8L69.8,66.8L66.9,66.9L66.8,77.5L64.4,77.7L67.1,86.0L75.9,87.3L76.2,93.5L74.2,93.4L73.5,111.5L71.5,111.4L70.9,127.4L47.1,126.4L47.1,129.3L29.0,128.8Z","cx":52.5,"cy":104.5},{"n":"Murray","pop":41316,"g":1,"t":2,"d":"M98.9,6.9L102.5,7.0L120.1,7.0L119.9,25.1L123.8,29.2L118.2,36.4L115.7,42.2L115.5,61.9L109.9,59.8L108.7,56.5L99.1,58.4L87.5,57.2L86.7,54.7L83.6,48.5L89.6,48.7L85.7,43.5L92.5,44.8L93.7,39.2L92.7,30.4L95.1,24.1L98.0,21.9L95.2,16.3Z","cx":105.6,"cy":33.8},{"n":"Walker","pop":69340,"g":12,"t":14,"d":"M17.5,55.0L22.4,48.8L22.5,44.8L27.4,36.8L27.6,27.0L31.0,17.8L37.6,6.6L48.3,6.5L48.0,24.2L55.2,24.3L55.0,35.2L61.4,36.2L58.5,42.6L71.7,42.9L71.5,56.0L69.4,60.8L65.0,60.7L18.2,59.7Z","cx":43.9,"cy":40.4},{"n":"Liberty","pop":68607,"g":18,"t":26,"d":"M443.9,404.4L448.7,398.8L451.6,398.8L457.9,404.0L463.4,411.7L463.4,414.5L471.7,416.1L477.0,413.9L478.3,417.1L485.4,418.7L488.5,430.6L492.3,433.9L493.9,431.7L496.5,438.4L500.2,437.7L502.4,443.3L509.5,446.8L511.2,450.1L517.5,450.7L517.3,460.5L512.9,469.8L510.4,468.2L510.3,462.8L502.7,457.2L490.7,456.9L482.9,458.9L475.7,451.1L458.6,442.5L458.1,439.7L453.1,436.6L443.9,427.9L446.2,419.5L445.7,415.1L440.3,414.0L437.0,409.1Z","cx":475.2,"cy":433.7},{"n":"Jeff Davis","pop":15119,"g":1,"t":2,"d":"M320.9,437.3L334.4,427.7L338.5,422.9L342.7,423.1L354.2,417.7L360.4,419.0L361.2,416.2L367.4,416.5L367.5,433.8L357.2,433.9L357.4,451.3L357.4,456.4L345.0,456.5L321.0,456.8Z","cx":343.9,"cy":438.6},{"n":"Emanuel","pop":23224,"g":6,"t":6,"d":"M365.9,308.8L369.9,306.6L367.4,302.1L374.0,301.3L379.2,298.6L390.7,302.8L398.5,301.5L406.1,321.7L415.6,329.1L412.1,338.5L406.7,335.6L399.0,341.1L395.0,347.4L394.6,352.9L386.9,364.2L389.5,368.5L384.2,371.9L375.5,372.3L375.5,369.4L369.3,364.0L372.0,352.2L360.1,345.4L341.6,342.7L351.4,340.0L347.7,333.7L362.7,324.3L358.6,319.3L363.9,314.6Z","cx":381.4,"cy":332.2},{"n":"Glynn","pop":86540,"g":35,"t":49,"d":"M449.2,501.7L453.6,492.0L456.5,492.1L461.4,484.8L469.9,495.1L483.3,503.2L489.5,502.7L502.5,505.4L500.2,517.5L494.9,520.1L491.7,527.1L488.0,527.5L488.1,535.8L486.6,542.1L483.3,543.5L478.2,541.2L468.1,532.9L469.7,529.6L461.0,531.5L454.7,529.6L445.4,523.5L445.4,519.1Z","cx":471.7,"cy":515},{"n":"Charlton","pop":13021,"g":1,"t":1,"d":"M403.3,545.5L409.1,545.4L411.5,536.7L426.1,540.2L429.5,541.3L428.8,549.9L431.3,552.0L428.9,558.6L431.4,558.9L430.3,571.0L424.9,570.1L421.2,577.1L416.2,576.2L417.9,579.0L414.6,580.9L415.1,586.6L413.5,593.6L418.7,604.1L417.6,618.0L415.2,623.5L415.7,630.2L414.0,633.3L407.7,632.6L399.8,634L395.1,625.2L396.2,616.9L393.2,613.9L392.3,607.3L394.4,605.6L401.6,576.3L398.2,575.4L370.2,575.1L370.3,545.6Z","cx":403.1,"cy":576.5},{"n":"Appling","pop":18669,"g":2,"t":2,"d":"M367.4,416.5L374.0,419.8L380.6,421.1L383.5,419.6L390.9,423.5L403.4,426.8L404.7,429.9L411.3,434.8L404.8,438.6L406.9,442.2L401.9,442.3L402.5,483.1L400.0,483.3L391.6,475.2L389.9,472.0L380.7,466.8L377.3,463.2L365.3,457.8L360.3,451.3L357.4,451.3L357.2,433.9L367.5,433.8Z","cx":384.2,"cy":445.9},{"n":"Polk","pop":44610,"g":7,"t":7,"d":"M29.0,128.8L47.1,129.3L47.1,126.4L70.9,127.4L70.8,129.1L84.9,129.4L78.3,147.0L70.2,146.8L70.1,153.3L51.9,152.8L51.9,153.7L32.2,153.1L31.1,144.7Z","cx":55,"cy":139.9},{"n":"Rockdale","pop":97610,"g":42,"t":66,"d":"M167.1,189.4L174.8,193.6L181.8,178.5L185.4,174.9L190.3,170.5L197.5,176.3L197.9,180.6L195.9,188.8L182.8,205.8L182.4,203.7L173.9,200.8Z","cx":185.4,"cy":188.3},{"n":"Cherokee","pop":293513,"g":98,"t":162,"d":"M115.6,85.0L123.3,85.2L123.2,89.4L159.7,89.7L159.7,96.0L159.6,116.1L148.7,117.3L147.8,124.5L141.4,126.5L141.3,131.2L114.3,130.4L114.5,113.5L115.4,110.1Z","cx":135.2,"cy":108.2},{"n":"Fulton","pop":1090354,"g":616,"t":997,"d":"M96.6,198.5L103.1,190.9L114.1,186.6L114.6,183.8L123.1,175.8L135.4,164.6L138.7,156.1L137.9,153.4L142.8,148.8L146.1,143.0L143.3,139.3L141.3,131.2L141.4,126.5L147.8,124.5L148.7,117.3L159.6,116.1L159.5,126.5L167.1,129.7L172.3,133.9L177.1,134.6L169.5,137.6L167.8,141.6L164.2,140.8L158.6,143.1L156.9,147.1L149.3,146.5L148.5,189.0L136.4,188.8L136.2,201.9L123.6,205.4L119.2,208.4L118.0,207.2L92.0,206.8L95.7,205.7L94.1,202.3Z","cx":135.4,"cy":169.8},{"n":"Glascock","pop":3008,"g":0,"t":0,"d":"M328.6,242.5L337.5,239.7L341.1,235.9L350.9,232.3L365.6,239.3L348.2,253.4L349.1,260.4L339.3,259.7L330.7,253.1L331.5,248.7L329.4,244.5Z","cx":345.3,"cy":245.7},{"n":"Clayton","pop":297703,"g":33,"t":42,"d":"M148.5,189.0L156.2,189.1L160.6,196.9L156.1,202.5L154.8,217.8L147.9,217.6L147.8,228.9L144.1,229.0L144.6,222.2L142.6,219.1L144.7,214.0L140.6,209.8L138.3,202.1L136.2,201.9L136.4,188.8Z","cx":147.7,"cy":203.2},{"n":"Greene","pop":21091,"g":20,"t":23,"d":"M255.0,182.5L267.9,177.6L269.1,173.9L287.3,182.3L295.4,180.1L301.1,183.0L306.4,187.4L299.1,198.4L302.4,206.5L299.6,213.5L282.6,229.0L278.5,223.6L273.3,223.0L273.7,220.4L269.2,211.6L270.4,204.9L261.8,195.8L259.0,188.2Z","cx":282.1,"cy":198.7},{"n":"Gilmer","pop":33327,"g":10,"t":11,"d":"M119.9,25.1L141.8,25.1L153.8,31.9L160.5,44.1L160.4,51.3L167.2,54.8L166.8,57.6L160.4,60.4L160.3,64.3L151.1,62.6L149.9,65.1L147.1,66.9L115.4,66.6L115.5,61.9L115.7,42.2L118.2,36.4L123.8,29.2Z","cx":137.8,"cy":47.6},{"n":"Ware","pop":36222,"g":15,"t":18,"d":"M345.3,498.3L345.2,484.1L348.5,484.1L360.6,484.0L362.3,490.9L369.8,490.9L372.7,497.9L372.8,505.3L376.6,511.6L381.7,516.7L385.4,516.9L385.5,521.2L394.2,524.0L394.4,535.6L403.3,545.5L370.3,545.6L370.2,575.1L398.2,575.4L401.6,576.3L394.4,605.6L370.5,604.1L369.2,599.9L368.1,571.8L361.4,572.0L361.6,552.5L358.3,552.5L354.9,547.5L349.9,545.1L340.5,522.8L337.2,517.4L337.1,510.0L345.0,510.4Z","cx":369.5,"cy":540.4},{"n":"Hart","pop":28052,"g":8,"t":10,"d":"M287.8,104.5L289.8,94.6L288.2,94.9L289.8,85.1L294.5,74.4L301.0,76.6L311.0,75.6L314.2,77.0L317.5,84.4L318.7,91.9L323.5,95.3L325.6,102.3L310.0,107.9L302.8,113.0L298.3,109.8L291.9,111.2Z","cx":304.4,"cy":93.8},{"n":"Pike","pop":20669,"g":5,"t":5,"d":"M131.3,251.7L136.6,248.4L143.1,248.4L145.6,251.0L159.8,251.2L159.3,271.5L156.8,278.0L131.9,277.4L127.8,280.5L126.6,275.3L128.8,260.1Z","cx":143.6,"cy":264.3},{"n":"Pickens","pop":36580,"g":10,"t":13,"d":"M115.4,66.6L147.1,66.9L149.9,65.1L153.0,77.9L159.8,78.3L159.7,89.7L123.2,89.4L123.3,85.2L115.6,85.0Z","cx":136.6,"cy":78.4},{"n":"Hancock","pop":8683,"g":1,"t":1,"d":"M270.1,251.7L272.5,242.0L284.7,235.1L282.6,229.0L299.6,213.5L302.9,216.4L312.2,217.5L317.9,216.9L320.7,219.0L321.2,226.2L323.2,227.4L325.3,240.4L328.6,242.5L329.4,244.5L326.2,244.5L317.7,250.3L312.4,259.5L304.7,262.2L300.2,266.1L295.4,266.1L289.7,270.2L287.6,265.8L290.0,256.6L279.0,253.2Z","cx":300.8,"cy":240.5},{"n":"Webster","pop":2315,"g":0,"t":0,"d":"M112.8,380.3L116.1,380.4L118.1,386.1L122.2,386.3L126.7,393.7L137.8,394.0L136.0,416.5L134.7,423.0L118.2,422.8L111.5,422.7L111.7,408.0L112.9,407.9L113.6,390.1L114.8,387.0Z","cx":123.8,"cy":405.9},{"n":"Echols","pop":3698,"g":0,"t":0,"d":"M300.4,568.3L305.8,565.6L320.5,570.2L322.2,577.4L326.4,582.7L337.7,583.7L349.0,586.4L351.5,588.8L351.2,602.9L339.1,602.2L286.7,599.0L287.1,576.5L290.4,574.5L292.5,568.5Z","cx":315.2,"cy":587.3},{"n":"Whitfield","pop":105070,"g":26,"t":37,"d":"M61.4,36.2L62.7,29.2L70.7,29.4L70.8,23.3L75.2,22.4L80.2,6.7L98.9,6.9L95.2,16.3L98.0,21.9L95.1,24.1L92.7,30.4L93.7,39.2L92.5,44.8L85.7,43.5L89.6,48.7L83.6,48.5L86.7,54.7L85.5,57.2L71.5,56.0L71.7,42.9L58.5,42.6Z","cx":81.2,"cy":31.4},{"n":"Baldwin","pop":43644,"g":13,"t":15,"d":"M270.1,251.7L279.0,253.2L290.0,256.6L287.6,265.8L289.7,270.2L295.4,266.1L293.3,273.3L295.8,279.0L293.0,284.3L284.4,275.9L260.8,287.1L254.2,262.8L252.6,252.0L259.9,252.7Z","cx":272.6,"cy":267.5},{"n":"Bryan","pop":51105,"g":15,"t":24,"d":"M441.6,390.3L459.2,385.0L480.9,377.6L486.2,397.1L489.2,403.6L496.8,410.1L501.1,422.0L508.5,420.2L516.2,429.1L511.7,434.6L512.3,441.6L514.5,446.7L509.5,446.8L502.4,443.3L500.2,437.7L496.5,438.4L493.9,431.7L492.3,433.9L488.5,430.6L485.4,418.7L478.3,417.1L477.0,413.9L471.7,416.1L463.4,414.5L463.4,411.7L457.9,404.0L451.6,398.8L448.7,398.8L444.6,396.7Z","cx":480.8,"cy":408.6},{"n":"Thomas","pop":46054,"g":12,"t":16,"d":"M172.8,537.3L186.1,537.4L186.1,542.3L216.9,542.9L216.0,594.4L185.4,592.4L176.2,591.8L177.2,560.6L172.7,551.9Z","cx":195.7,"cy":566.5},{"n":"Early","pop":10444,"g":3,"t":3,"d":"M60.4,504.9L60.1,497.6L63.5,488.3L62.8,483.3L65.8,476.7L67.8,480.9L78.2,478.7L91.9,479.3L94.8,479.2L95.5,488.0L112.9,488.6L112.2,512.2L80.2,512.3L79.5,537.1L67.4,536.5L66.2,532.1L58.0,521.4L59.4,515.1L57.4,509.2Z","cx":81.9,"cy":503.2},{"n":"Clinch","pop":6871,"g":1,"t":1,"d":"M305.6,523.0L340.5,522.8L349.9,545.1L354.9,547.5L358.3,552.5L361.6,552.5L361.4,572.0L368.1,571.8L369.2,599.9L370.5,604.1L365.9,603.8L351.2,602.9L351.5,588.8L349.0,586.4L337.7,583.7L326.4,582.7L322.2,577.4L320.5,570.2L305.8,565.6Z","cx":336.6,"cy":559.1},{"n":"Macon","pop":11831,"g":1,"t":1,"d":"M187.0,340.7L186.2,341.8L181.3,341.7ZM158.2,361.9L158.2,358.6L164.8,358.0L173.5,343.8L181.3,341.7L185.4,343.8L194.8,343.9L204.6,349.0L205.8,360.7L204.6,373.1L198.8,374.5L191.0,378.8L183.9,389.3L177.4,386.5L171.6,387.2L171.6,381.5L166.3,381.2L161.8,381.0L162.2,372.3L157.7,372.1Z","cx":182.5,"cy":364.1},{"n":"Baker","pop":2732,"g":0,"t":0,"d":"M112.9,488.6L129.9,489.6L134.9,486.0L137.0,488.5L162.3,488.8L170.2,488.2L168.9,491.7L163.9,494.6L163.5,499.6L150.1,504.0L144.2,515.2L127.4,530.7L127.4,536.9L123.2,536.8L124.3,512.8L112.2,512.2Z","cx":135.2,"cy":503.6},{"n":"Dade","pop":16068,"g":4,"t":5,"d":"M10.5,6L25.2,6.4L37.6,6.6L31.0,17.8L27.6,27.0L27.4,36.8L22.5,44.8L22.4,48.8L17.5,55.0L12.9,22.8Z","cx":21.6,"cy":23.7},{"n":"Dougherty","pop":82418,"g":37,"t":55,"d":"M134.7,463.3L152.5,463.4L181.9,463.4L184.8,459.8L187.3,463.2L186.8,487.7L170.2,488.2L162.3,488.8L137.0,488.5L139.1,485.7L133.8,468.1Z","cx":161.7,"cy":475.6},{"n":"Mitchell","pop":20329,"g":3,"t":3,"d":"M170.2,488.2L186.8,487.7L186.7,502.5L186.1,537.4L172.8,537.3L142.8,536.9L127.4,536.9L127.4,530.7L144.2,515.2L150.1,504.0L163.5,499.6L163.9,494.6L168.9,491.7Z","cx":164.1,"cy":517.4},{"n":"Seminole","pop":9274,"g":3,"t":3,"d":"M67.4,536.5L79.5,537.1L101.5,537.8L99.0,541.6L98.3,561.4L94.4,574.0L87.3,577.9L84.3,583.9L79.7,580.5L77.3,571.7L76.6,562.1L72.1,555.9L69.8,546.7Z","cx":85.2,"cy":555.5},{"n":"Schley","pop":4503,"g":0,"t":0,"d":"M142.2,356.1L145.9,354.2L145.5,358.3L150.4,358.3L150.0,361.7L158.2,361.9L157.7,372.1L162.2,372.3L161.8,381.0L166.3,381.2L166.2,390.8L137.8,389.5L137.9,380.7L140.0,380.7L140.1,371.9L142.5,371.9Z","cx":151.1,"cy":376.8},{"n":"Henry","pop":259315,"g":81,"t":113,"d":"M156.2,189.1L160.2,191.4L167.1,189.4L173.9,200.8L182.4,203.7L182.8,205.8L184.4,209.5L194.1,211.8L196.6,216.9L190.9,221.8L192.1,226.2L184.3,228.0L181.0,235.0L176.2,236.6L170.9,234.4L170.9,231.4L159.9,231.3L159.6,229.0L147.8,228.9L147.9,217.6L154.8,217.8L156.1,202.5L160.6,196.9Z","cx":170.6,"cy":215.7},{"n":"Taylor","pop":7783,"g":1,"t":2,"d":"M181.3,341.7L186.2,341.8L185.4,343.8ZM136.7,336.0L140.8,336.0L140.8,329.4L144.1,326.5L145.8,320.1L148.7,320.2L148.7,314.6L154.9,311.0L158.1,314.4L160.6,312.2L164.2,318.9L175.3,321.2L181.0,326.2L179.3,331.3L181.3,335.6L187.0,340.7L181.3,341.7L173.5,343.8L164.8,358.0L158.2,358.6L158.2,361.9L150.0,361.7L150.4,358.3L145.5,358.3L145.9,354.2L142.2,356.1L140.7,346.4L137.8,345.3L135.4,339.7Z","cx":158.8,"cy":337},{"n":"Burke","pop":24472,"g":2,"t":2,"d":"M379.2,298.6L384.0,284.7L381.7,267.9L384.5,255.5L388.0,245.0L383.9,240.1L394.4,235.9L403.0,244.7L407.5,243.1L416.9,245.1L421.7,241.5L427.4,240.3L431.1,242.2L436.4,247.0L439.2,245.5L442.1,248.6L440.1,251.1L443.5,256.3L454.6,262.5L458.3,262.4L466.5,268.9L441.6,287.7L439.5,285.2L431.3,282.0L419.9,286.2L405.6,287.4L400.8,291.8L398.5,301.5L390.7,302.8Z","cx":414.8,"cy":267.7},{"n":"Union","pop":27601,"g":7,"t":8,"d":"M174.7,7.6L188.2,7.7L195.8,7.7L195.0,10.0L198.2,16.0L205.3,19.7L208.9,17.8L209.7,23.4L213.3,30.7L213.3,34.2L208.1,36.1L207.7,42.7L204.9,43.7L195.7,41.1L190.5,44.5L189.2,49.6L184.4,54.5L174.8,51.4L171.2,53.6L177.3,42.9L178.5,32.9L173.3,32.1L173.0,25.8L177.0,21.2L169.1,12.3Z","cx":189.9,"cy":28.7},{"n":"Upson","pop":28358,"g":4,"t":5,"d":"M127.8,280.5L131.9,277.4L156.8,278.0L173.9,278.3L173.4,286.1L173.4,297.3L173.3,303.9L170.5,303.8L164.2,318.9L160.6,312.2L158.1,314.4L154.9,311.0L143.1,305.6L139.5,298.6L135.4,299.7L129.7,292.5L127.7,288.3Z","cx":153.2,"cy":292.9},{"n":"Walton","pop":109792,"g":44,"t":52,"d":"M190.3,170.5L210.9,151.1L215.0,155.9L224.7,152.8L227.9,154.4L229.9,156.9L235.1,157.4L236.0,162.2L243.6,166.4L224.2,196.3L218.1,189.6L215.3,189.5L197.5,176.3Z","cx":218.2,"cy":171.3},{"n":"Washington","pop":19834,"g":3,"t":3,"d":"M295.4,266.1L300.2,266.1L304.7,262.2L312.4,259.5L317.7,250.3L326.2,244.5L329.4,244.5L331.5,248.7L330.7,253.1L339.3,259.7L346.7,272.4L352.5,274.0L353.8,283.7L357.1,287.8L355.1,299.2L356.0,300.7L351.5,301.0L339.3,306.1L337.6,304.2L327.8,308.2L323.7,302.6L307.4,309.6L304.9,299.4L298.3,296.5L293.0,284.3L295.8,279.0L293.3,273.3Z","cx":324.4,"cy":280.9},{"n":"Wayne","pop":32132,"g":3,"t":4,"d":"M411.3,434.8L415.5,435.5L420.5,439.8L427.6,445.1L434.4,456.1L438.9,456.4L441.5,460.6L452.4,468.0L452.4,471.2L456.6,473.2L457.1,477.1L462.6,482.6L461.4,484.8L456.5,492.1L453.6,492.0L449.2,501.7L440.8,497.3L426.8,499.8L413.0,496.3L411.3,491.5L411.6,485.3L407.4,481.9L402.5,483.1L401.9,442.3L406.9,442.2L404.8,438.6Z","cx":427.2,"cy":471.8},{"n":"Berrien","pop":18666,"g":1,"t":1,"d":"M251.9,500.6L259.4,493.7L259.4,485.1L263.1,483.6L285.5,484.0L285.9,491.1L289.3,498.2L295.5,503.3L298.5,510.7L296.4,516.5L296.9,523.0L298.1,528.0L283.1,528.1L283.2,539.5L279.4,539.6L279.4,544.5L268.2,544.3L269.8,539.4L264.8,532.0L266.9,525.3L263.6,522.1L263.6,514.9L257.7,513.0L251.5,505.2Z","cx":275.9,"cy":510.6},{"n":"Wheeler","pop":7076,"g":3,"t":3,"d":"M309.9,394.0L316.4,387.6L314.8,385.9L318.1,386.1L333.6,370.4L341.0,371.8L341.9,379.0L344.8,384.2L344.5,394.1L346.6,400.1L347.9,410.3L353.7,414.5L354.2,417.7L342.7,423.1L336.8,418.1L333.1,411.3L326.5,409.3L324.8,406.3L314.9,401.6Z","cx":333.4,"cy":396.5},{"n":"Columbia","pop":167472,"g":73,"t":126,"d":"M365.5,188.3L367.0,186.2L378.7,181.4L382.4,183.6L388.9,183.3L391.4,190.8L396.7,195.2L400.8,195.2L410.6,202.1L380.9,228.3L375.5,221.5L375.9,219.5L370.6,213.2L368.5,206.6L370.5,204.7L364.4,202.1L367.2,196.9L363.9,190.1Z","cx":384,"cy":202.7},{"n":"Dodge","pop":19630,"g":8,"t":8,"d":"M262.1,375.7L269.1,368.6L266.6,366.3L281.8,351.2L285.9,355.1L302.9,392.4L314.8,385.9L316.4,387.6L309.9,394.0L278.3,426.0L275.8,421.2L271.7,419.1L266.7,405.7L267.9,401.9L263.0,398.3L266.7,394.5L264.6,392.2L268.3,388.4L258.8,378.7Z","cx":282.6,"cy":389.1},{"n":"Gwinnett","pop":1003869,"g":393,"t":607,"d":"M156.9,147.1L158.6,143.1L164.2,140.8L167.8,141.6L169.5,137.6L177.1,134.6L175.1,132.5L177.2,124.9L181.3,118.7L203.0,128.2L208.6,124.3L202.9,141.0L206.5,143.7L210.9,151.1L190.3,170.5L185.4,174.9L179.8,171.7L170.5,161.4L165.3,158.7L158.9,152.3Z","cx":185.5,"cy":146.8},{"n":"Dawson","pop":33748,"g":13,"t":18,"d":"M149.9,65.1L151.1,62.6L160.3,64.3L160.4,60.4L166.8,57.6L167.6,59.7L167.1,67.9L176.7,78.3L190.7,84.9L190.6,93.0L193.4,96.3L159.7,96.0L159.7,89.7L159.8,78.3L153.0,77.9Z","cx":169.5,"cy":81.2},{"n":"Johnson","pop":9178,"g":2,"t":2,"d":"M307.4,309.6L323.7,302.6L327.8,308.2L337.6,304.2L339.3,306.1L351.5,301.0L356.0,300.7L363.0,308.0L365.9,308.8L363.9,314.6L358.6,319.3L362.7,324.3L347.7,333.7L351.4,340.0L341.6,342.7L338.7,341.2L339.4,329.2L324.7,322.8L325.9,319.3L316.8,315.4L306.2,316.4Z","cx":340.5,"cy":317.3},{"n":"Jefferson","pop":15019,"g":3,"t":4,"d":"M339.3,259.7L349.1,260.4L348.2,253.4L365.6,239.3L370.8,234.2L374.0,234.1L383.9,240.1L388.0,245.0L384.5,255.5L381.7,267.9L384.0,284.7L379.2,298.6L374.0,301.3L367.4,302.1L369.9,306.6L365.9,308.8L363.0,308.0L356.0,300.7L355.1,299.2L357.1,287.8L353.8,283.7L352.5,274.0L346.7,272.4Z","cx":367.3,"cy":269.3},{"n":"Effingham","pop":73148,"g":13,"t":17,"d":"M485.3,329.5L493.1,334.3L497.7,334.5L498.1,337.4L507.8,346.7L506.2,350.6L512.6,362.7L514.3,362.2L516.9,371.0L512.9,376.9L514.2,378.9L508.4,377.5L486.2,397.1L480.9,377.6L480.4,373.1L474.4,362.7L472.4,361.9L468.1,354.0L470.1,349.5L467.5,344.2L468.3,341.5Z","cx":491.3,"cy":360.4},{"n":"Lanier","pop":10464,"g":2,"t":2,"d":"M296.9,523.0L305.6,523.0L305.8,565.6L300.4,568.3L299.9,561.1L297.4,555.1L281.6,554.8L281.5,544.5L279.4,544.5L279.4,539.6L283.2,539.5L283.1,528.1L298.1,528.0Z","cx":295.1,"cy":542.8},{"n":"Franklin","pop":25208,"g":4,"t":4,"d":"M255.7,79.2L258.5,77.9L280.5,76.9L288.5,68.9L294.5,74.4L289.8,85.1L288.2,94.9L289.8,94.6L287.8,104.5L281.0,109.3L269.8,107.9L266.9,105.8L260.5,111.3L262.5,106.3L256.5,97.7L257.7,83.5Z","cx":274.7,"cy":90.8},{"n":"Telfair","pop":11000,"g":3,"t":3,"d":"M278.3,426.0L309.9,394.0L314.9,401.6L324.8,406.3L326.5,409.3L333.1,411.3L336.8,418.1L342.7,423.1L338.5,422.9L334.4,427.7L320.9,437.3L317.2,441.8L304.4,440.5L302.3,442.1L298.6,442.5L292.4,438.0L286.2,437.7L281.6,433.1Z","cx":308.9,"cy":421.9},{"n":"Elbert","pop":20152,"g":4,"t":5,"d":"M291.9,111.2L298.3,109.8L302.8,113.0L310.0,107.9L325.6,102.3L329.3,107.2L329.3,113.1L332.2,121.0L337.0,123.8L340.3,131.5L346.0,137.1L346.0,139.4L349.7,147.2L345.2,143.9L340.4,143.4L339.2,142.5L325.5,145.3L315.8,143.7L306.9,139.4L303.3,135.6L296.4,128.1L292.7,120.6L289.1,118.1Z","cx":318.3,"cy":125.8},{"n":"Lowndes","pop":122082,"g":40,"t":57,"d":"M247.4,543.8L268.2,544.3L279.4,544.5L281.5,544.5L281.6,554.8L297.4,555.1L299.9,561.1L300.4,568.3L292.5,568.5L290.4,574.5L287.1,576.5L286.7,599.0L270.8,597.9L261.2,597.2L260.3,594.3L251.5,590.2L246.1,581.6L249.5,579.8L250.3,572.7L253.2,573.1L261.6,569.5L259.5,563.8L251.5,561.0L252.8,555.0Z","cx":271.7,"cy":570.6},{"n":"Talbot","pop":5755,"g":1,"t":1,"d":"M107.6,297.4L122.7,297.5L129.7,292.5L135.4,299.7L139.5,298.6L143.1,305.6L154.9,311.0L148.7,314.6L148.7,320.2L145.8,320.1L144.1,326.5L140.8,329.4L140.8,336.0L136.7,336.0L131.3,336.0L129.7,338.6L122.7,338.8L120.6,341.1L114.5,339.4L107.9,341.5L111.3,335.4L108.0,332.7L108.8,299.4Z","cx":126.6,"cy":317.4},{"n":"Hall","pop":221745,"g":76,"t":110,"d":"M193.4,96.3L190.6,93.0L190.7,84.9L206.0,73.1L226.0,73.5L231.6,83.1L227.2,87.4L225.6,92.1L227.6,98.1L230.8,101.6L208.6,124.3L203.0,128.2L181.3,118.7L184.9,115.0L189.7,115.0L194.2,109.1L195.8,102.9Z","cx":208.7,"cy":98.5},{"n":"Houston","pop":174897,"g":51,"t":73,"d":"M204.6,349.0L210.4,352.0L210.4,345.3L216.1,344.1L216.2,340.2L219.4,340.5L219.5,326.6L221.5,318.9L221.5,318.8L225.6,321.2L233.4,322.6L237.9,324.2L240.3,333.1L239.1,335.1L242.4,345.0L245.7,346.8L244.8,351.3L244.8,358.1L241.6,358.1L231.3,373.5L204.6,373.1L205.8,360.7Z","cx":225.5,"cy":350.4},{"n":"Pierce","pop":20669,"g":5,"t":5,"d":"M369.8,490.9L378.0,489.0L383.0,483.8L382.9,480.5L386.7,480.4L391.6,475.2L400.0,483.3L402.5,483.1L407.4,481.9L411.6,485.3L411.3,491.5L413.0,496.3L415.6,502.5L418.9,505.0L417.3,509.2L404.9,510.3L401.2,512.8L401.2,516.3L395.8,519.0L385.4,516.9L381.7,516.7L376.6,511.6L372.8,505.3L372.7,497.9Z","cx":393.5,"cy":498.7},{"n":"Irwin","pop":9155,"g":0,"t":0,"d":"M244.4,467.5L245.7,453.8L249.8,452.0L249.8,445.4L264.7,445.5L264.7,455.9L271.3,456.0L271.3,459.3L281.7,459.7L281.7,456.1L302.4,456.7L300.3,461.8L295.4,465.1L295.4,471.4L289.2,483.1L285.5,484.0L263.1,483.6L258.5,482.8L256.5,476.0L253.6,473.1L244.4,470.8Z","cx":270.4,"cy":466.5},{"n":"Lincoln","pop":8049,"g":2,"t":2,"d":"M340.4,143.4L345.2,143.9L349.7,147.2L354.2,148.9L361.9,157.2L373.7,163.1L385.5,174.4L388.9,183.3L382.4,183.6L378.7,181.4L367.0,186.2L365.5,188.3L359.4,189.9L348.7,170.2L346.2,164.4L348.2,158.2L345.0,160.2Z","cx":362.6,"cy":169},{"n":"Long","pop":20439,"g":0,"t":0,"d":"M437.0,409.1L440.3,414.0L445.7,415.1L446.2,419.5L443.9,427.9L453.1,436.6L458.1,439.7L458.6,442.5L475.7,451.1L467.7,467.9L456.6,473.2L452.4,471.2L452.4,468.0L441.5,460.6L438.9,456.4L434.4,456.1L427.6,445.1L420.5,439.8L426.9,426.6L430.6,422.2L430.9,415.5Z","cx":446.6,"cy":444.6},{"n":"Monroe","pop":31437,"g":5,"t":5,"d":"M173.4,286.1L181.6,286.3L182.9,273.0L183.0,249.5L203.8,249.8L207.8,252.7L208.6,259.2L216.3,268.5L220.4,283.5L199.9,297.5L173.4,297.3Z","cx":196.8,"cy":275.2},{"n":"Oconee","pop":44751,"g":27,"t":39,"d":"M227.9,154.4L240.4,146.2L243.6,151.0L253.3,151.6L264.2,161.3L269.5,162.3L266.3,167.2L269.1,173.9L267.9,177.6L255.0,182.5L250.5,179.3L246.9,168.5L243.6,166.4L236.0,162.2L235.1,157.4L229.9,156.9Z","cx":251.5,"cy":164.1},{"n":"Peach","pop":29213,"g":10,"t":10,"d":"M186.2,341.8L187.0,340.7L214.2,318.8L221.5,318.9L219.5,326.6L219.4,340.5L216.2,340.2L216.1,344.1L210.4,345.3L210.4,352.0L204.6,349.0L194.8,343.9L185.4,343.8Z","cx":207.1,"cy":335.5},{"n":"Quitman","pop":2323,"g":0,"t":0,"d":"M65.1,412.5L67.1,414.6L77.4,414.8L77.4,418.2L82.7,421.8L82.0,441.8L76.6,441.5L63.0,442.2L57.2,440.9L55.7,432.9L57.0,427.7L62.9,419.4Z","cx":70,"cy":429.5},{"n":"Randolph","pop":6085,"g":0,"t":0,"d":"M76.6,441.5L82.0,441.8L82.7,421.8L111.5,422.7L118.2,422.8L117.5,442.8L121.2,444.3L124.8,455.8L123.5,463.3L119.0,463.3L112.0,460.2L111.1,463.3L92.5,463.1L78.0,463.1L76.1,450.3Z","cx":99.9,"cy":444.1},{"n":"Stewart","pop":4809,"g":3,"t":3,"d":"M66.4,402.8L65.8,392.9L71.2,386.9L77.0,384.6L76.2,381.7L81.6,380.2L111.6,380.3L112.8,380.3L114.8,387.0L113.6,390.1L112.9,407.9L111.7,408.0L111.5,422.7L82.7,421.8L77.4,418.2L77.4,414.8L67.1,414.6L65.1,412.5Z","cx":91.3,"cy":400.9},{"n":"Jasper","pop":17219,"g":2,"t":2,"d":"M203.4,227.2L207.1,223.8L207.5,217.9L213.6,215.8L217.7,212L224.6,211.1L223.8,205.8L240.8,218.3L240.0,223.7L239.1,253.9L208.6,259.2L207.8,252.7L208.7,244.3L205.8,232.5Z","cx":223.3,"cy":234.4},{"n":"Forsyth","pop":280096,"g":80,"t":128,"d":"M159.6,116.1L159.7,96.0L193.4,96.3L195.8,102.9L194.2,109.1L189.7,115.0L184.9,115.0L181.3,118.7L177.2,124.9L175.1,132.5L177.1,134.6L172.3,133.9L167.1,129.7L159.5,126.5Z","cx":174.7,"cy":110.9},{"n":"Taliaferro","pop":1620,"g":0,"t":0,"d":"M301.1,183.0L306.3,177.6L314.5,192.8L315.7,189.9L321.7,188.0L329.9,194.0L335.5,192.8L336.8,195.6L333.9,197.2L332.4,203.6L329.2,207.6L321.9,206.3L315.8,213.7L317.9,216.9L312.2,217.5L302.9,216.4L299.6,213.5L302.4,206.5L299.1,198.4L306.4,187.4Z","cx":314.5,"cy":200.3},{"n":"Toombs","pop":27488,"g":9,"t":11,"d":"M361.2,416.2L365.8,382.4L366.1,372.3L369.3,364.0L375.5,369.4L375.5,372.3L384.2,371.9L389.5,368.5L391.7,380.6L395.5,389.1L394.3,393.5L390.9,423.5L383.5,419.6L380.6,421.1L374.0,419.8L367.4,416.5Z","cx":378.6,"cy":395.6},{"n":"Troup","pop":71513,"g":24,"t":33,"d":"M47.4,258.0L60.9,253.5L62.2,249.3L64.6,252.5L81.4,245.5L89.9,245.8L89.8,250.2L89.4,280.2L89.7,293.4L89.7,294.0L52.5,293.2L47.7,260.9Z","cx":70.8,"cy":271.4},{"n":"Twiggs","pop":7728,"g":0,"t":0,"d":"M242.8,298.1L255.0,290.9L275.6,333.4L244.8,351.3L245.7,346.8L242.4,345.0L239.1,335.1L240.3,333.1L237.9,324.2L233.4,322.6L231.8,319.3L232.6,312.2L235.4,312.6L245.7,301.0Z","cx":252.7,"cy":322.1},{"n":"Paulding","pop":188549,"g":35,"t":43,"d":"M84.9,129.4L105.5,130.1L105.3,148.0L106.9,148.0L106.7,167.1L106.6,169.5L89.2,171.2L86.4,170.3L71.1,165.9L71.7,153.4L70.1,153.3L70.2,146.8L78.3,147.0Z","cx":90.7,"cy":151.6},{"n":"Fayette","pop":125107,"g":80,"t":128,"d":"M119.2,208.4L123.6,205.4L136.2,201.9L138.3,202.1L140.6,209.8L144.7,214.0L142.6,219.1L144.6,222.2L144.1,229.0L143.3,234.8L138.7,241.9L131.4,241.7L127.5,231.1L121.4,228.0L117.0,217.0Z","cx":132.2,"cy":220.9},{"n":"Jackson","pop":93825,"g":29,"t":39,"d":"M208.6,124.3L230.8,101.6L237.6,107.5L246.4,106.2L255.3,114.9L259.7,119.4L260.5,125.8L257.3,134.8L260.1,136.2L244.4,143.3L240.4,146.2L237.2,137.4L231.5,135.3L214.6,132.8Z","cx":237.1,"cy":123.5},{"n":"Turner","pop":9023,"g":3,"t":4,"d":"M209.7,439.2L231.6,439.1L231.6,432.4L246.5,433.3L249.8,445.4L249.8,452.0L245.7,453.8L244.4,467.5L227.0,467.3L227.0,471.1L219.2,463.8L210.1,463.6Z","cx":230.1,"cy":451},{"n":"Bulloch","pop":85454,"g":21,"t":32,"d":"M415.6,329.1L433.5,323.1L438.1,324.1L441.4,328.8L451.0,336.8L467.5,344.2L470.1,349.5L468.1,354.0L472.4,361.9L474.4,362.7L480.4,373.1L480.9,377.6L459.2,385.0L441.6,390.3L437.3,378.8L428.6,374.0L419.6,374.9L421.2,372.6L425.4,354.9L418.3,346.6L419.1,341.7L412.1,338.5Z","cx":445.5,"cy":357.3},{"n":"Lumpkin","pop":36016,"g":8,"t":9,"d":"M167.6,59.7L171.2,53.6L174.8,51.4L184.4,54.5L189.2,49.6L190.5,44.5L195.7,41.1L204.9,43.7L202.8,50.1L203.6,67.0L207.2,69.5L206.0,73.1L190.7,84.9L176.7,78.3L167.1,67.9Z","cx":188.2,"cy":64},{"n":"Spalding","pop":70292,"g":19,"t":26,"d":"M131.4,241.7L138.7,241.9L143.3,234.8L144.1,229.0L147.8,228.9L159.6,229.0L159.9,231.3L170.9,231.4L170.9,234.4L176.2,236.6L177.8,238.2L173.7,242.7L173.7,249.5L173.6,252.7L162.2,252.5L159.8,251.2L145.6,251.0L143.1,248.4L136.6,248.4L131.3,251.7L131.0,246.6Z","cx":155.8,"cy":241.5},{"n":"Towns","pop":13184,"g":4,"t":5,"d":"M195.8,7.7L231.3,7.9L238.9,7.1L239.2,13.4L233.3,14.4L233.3,17.9L226.9,22.6L227.7,30.2L224.1,33.2L213.3,34.2L213.3,30.7L209.7,23.4L208.9,17.8L205.3,19.7L198.2,16.0L195.0,10.0Z","cx":217.9,"cy":17.5},{"n":"Wilkinson","pop":8667,"g":1,"t":1,"d":"M260.8,287.1L284.4,275.9L293.0,284.3L298.3,296.5L304.9,299.4L307.4,309.6L306.2,316.4L275.6,333.4L255.0,290.9Z","cx":281.9,"cy":303.7},{"n":"Lee","pop":34073,"g":11,"t":11,"d":"M195.7,424.7L194.0,433.1L189.5,439.1L185.8,439.3L188.2,444.2L183.2,450.8L184.8,459.8L181.9,463.4L152.5,463.4L152.6,453.1L153.9,440.5L156.8,440.6L156.9,435.5L153.2,430.5L147.8,429.3L147.9,423.5Z","cx":170.7,"cy":442.3},{"n":"Tattnall","pop":24275,"g":6,"t":7,"d":"M389.5,368.5L413.4,373.6L418.7,400.3L429.5,404.3L443.9,404.4L437.0,409.1L430.9,415.5L430.6,422.2L426.9,426.6L420.5,439.8L415.5,435.5L411.3,434.8L404.7,429.9L403.4,426.8L390.9,423.5L394.3,393.5L395.5,389.1L391.7,380.6Z","cx":409.9,"cy":405.1},{"n":"Marion","pop":7635,"g":0,"t":0,"d":"M114.5,339.4L120.6,341.1L122.7,338.8L129.7,338.6L131.3,336.0L136.7,336.0L135.4,339.7L137.8,345.3L140.7,346.4L142.2,356.1L142.5,371.9L140.1,371.9L140.0,380.7L137.9,380.7L137.8,389.5L137.8,394.0L126.7,393.7L122.2,386.3L118.1,386.1L116.1,380.4L112.8,380.3L111.6,380.3L112.4,344.8Z","cx":127.1,"cy":364.3},{"n":"Camden","pop":59099,"g":19,"t":23,"d":"M445.4,523.5L454.7,529.6L461.0,531.5L469.7,529.6L468.1,532.9L478.2,541.2L483.3,543.5L477.5,548.9L483.0,551.6L487.5,548.7L488.1,558.1L481.8,577.0L484.1,585.1L478.6,583.0L472.8,584.8L465.6,582.9L451.8,580.9L448.8,578.0L441.2,574.9L434.1,574.7L430.3,571.0L431.4,558.9L428.9,558.6L431.3,552.0L428.8,549.9L429.5,541.3L426.1,540.2L428.1,533.8L436.8,533.3L439.3,528.0Z","cx":457.1,"cy":555.8},{"n":"Carroll","pop":129911,"g":39,"t":47,"d":"M37.2,186.9L42.5,187.1L59.6,180.9L63.2,181.6L69.7,179.0L69.9,165.8L71.1,165.9L86.4,170.3L85.6,198.4L96.6,198.5L94.1,202.3L95.7,205.7L92.0,206.8L91.2,209.3L85.0,212.5L81.7,216.8L76.5,214.1L73.2,218.2L41.6,217.5L40.5,210.0Z","cx":66.1,"cy":197},{"n":"Gordon","pop":60765,"g":17,"t":20,"d":"M69.4,60.8L71.5,56.0L85.5,57.2L86.7,54.7L87.5,57.2L99.1,58.4L108.7,56.5L109.9,59.8L115.5,61.9L115.4,66.6L115.6,85.0L106.4,84.9L106.4,87.1L81.9,86.4L81.9,88.5L75.9,87.3L67.1,86.0L64.4,77.7L66.8,77.5L66.9,66.9L69.8,66.8Z","cx":90.8,"cy":72.4},{"n":"Rabun","pop":17711,"g":5,"t":5,"d":"M238.9,7.1L246.4,7.0L287.9,6.0L286.7,14.4L274.4,22.3L264.0,34.6L264.4,38.8L260.8,44.6L252.0,40.4L246.8,43.6L238.8,40.1L234.8,30.5L227.7,30.2L226.9,22.6L233.3,17.9L233.3,14.4L239.2,13.4Z","cx":255.3,"cy":22.2},{"n":"Laurens","pop":50287,"g":15,"t":18,"d":"M275.6,333.4L306.2,316.4L316.8,315.4L325.9,319.3L324.7,322.8L339.4,329.2L338.7,341.2L341.6,342.7L342.1,348.7L337.6,349.9L336.4,355.7L330.3,367.7L333.6,370.4L318.1,386.1L314.8,385.9L302.9,392.4L285.9,355.1Z","cx":310.6,"cy":349.7},{"n":"Screven","pop":14325,"g":3,"t":3,"d":"M441.6,287.7L466.5,268.9L472.7,273.8L470.8,281.6L475.9,289.0L476.8,294.7L480.5,296.4L480.7,306.2L482.4,309.4L480.5,315.2L482.9,316.1L484.7,321.6L481.9,325.0L485.3,329.5L468.3,341.5L467.5,344.2L451.0,336.8L441.4,328.8L438.1,324.1L433.5,323.1L430.2,319.9Z","cx":459.6,"cy":309.1},{"n":"Warren","pop":5148,"g":0,"t":0,"d":"M336.8,195.6L340.4,194.3L347.9,215.7L351.6,220.3L352.4,225.9L356.5,230.3L363.0,230.4L370.8,234.2L365.6,239.3L350.9,232.3L341.1,235.9L337.5,239.7L328.6,242.5L325.3,240.4L323.2,227.4L321.2,226.2L320.7,219.0L317.9,216.9L315.8,213.7L321.9,206.3L329.2,207.6L332.4,203.6L333.9,197.2Z","cx":337.6,"cy":221.5},{"n":"Candler","pop":11130,"g":1,"t":1,"d":"M412.1,338.5L419.1,341.7L418.3,346.6L425.4,354.9L421.2,372.6L419.6,374.9L413.4,373.6L389.5,368.5L386.9,364.2L394.6,352.9L395.0,347.4L399.0,341.1L406.7,335.6Z","cx":407.7,"cy":356.9},{"n":"Colquitt","pop":46977,"g":11,"t":13,"d":"M186.7,502.5L226.6,503.2L242.8,503.7L243.2,520.1L239.9,523.9L235.7,537.5L235.7,543.5L216.9,542.9L186.1,542.3L186.1,537.4Z","cx":213.3,"cy":522.4},{"n":"Habersham","pop":49665,"g":18,"t":21,"d":"M227.7,30.2L234.8,30.5L238.8,40.1L246.8,43.6L252.0,40.4L260.8,44.6L262.4,48.6L259.6,50.2L248.8,76.5L240.4,75.0L231.6,83.1L226.0,73.5L231.6,66.7L228.8,63.1L228.8,57.3L226.4,52.3L230.8,42.4L230.0,38.2L224.1,33.2Z","cx":241.1,"cy":56.3},{"n":"Jenkins","pop":8836,"g":1,"t":1,"d":"M441.6,287.7L430.2,319.9L433.5,323.1L415.6,329.1L406.1,321.7L398.5,301.5L400.8,291.8L405.6,287.4L419.9,286.2L431.3,282.0L439.5,285.2Z","cx":419.5,"cy":304},{"n":"Bacon","pop":11045,"g":2,"t":2,"d":"M345.0,456.5L357.4,456.4L357.4,451.3L360.3,451.3L365.3,457.8L377.3,463.2L380.7,466.8L389.9,472.0L391.6,475.2L386.7,480.4L382.9,480.5L383.0,483.8L378.0,489.0L369.8,490.9L362.3,490.9L360.6,484.0L348.5,484.1L348.9,472.1L345.1,472.0Z","cx":365.6,"cy":472.6},{"n":"McIntosh","pop":11800,"g":1,"t":1,"d":"M456.6,473.2L467.7,467.9L475.7,451.1L482.9,458.9L490.7,456.9L502.7,457.2L510.3,462.8L510.4,468.2L503.0,471.1L503.1,473.6L510.1,472.3L512.6,475.1L503.4,490.5L501.1,501.1L502.5,505.4L489.5,502.7L483.3,503.2L469.9,495.1L461.4,484.8L462.6,482.6L457.1,477.1Z","cx":486.1,"cy":478.7},{"n":"Richmond","pop":206303,"g":97,"t":182,"d":"M374.0,234.1L380.9,228.3L410.6,202.1L412.2,203.8L416.0,210.3L422.1,213.2L423.8,216.0L421.0,221.0L422.7,225.5L421.1,229.3L432.6,238.7L431.1,242.2L427.4,240.3L421.7,241.5L416.9,245.1L407.5,243.1L403.0,244.7L394.4,235.9L383.9,240.1Z","cx":405.5,"cy":227.4},{"n":"Wilkes","pop":9567,"g":2,"t":2,"d":"M325.5,145.3L339.2,142.5L340.4,143.4L345.0,160.2L348.2,158.2L346.2,164.4L348.7,170.2L359.4,189.9L356.5,187.2L352.1,190.1L347.6,188.6L344.0,193.8L340.4,194.3L336.8,195.6L335.5,192.8L329.9,194.0L321.7,188.0L315.7,189.9L314.5,192.8L306.3,177.6L302.2,171.2L307.0,162.0L309.4,160.8L314.6,152.1L323.9,148.2Z","cx":329.6,"cy":170.9},{"n":"Crawford","pop":12349,"g":0,"t":0,"d":"M164.2,318.9L170.5,303.8L173.3,303.9L173.4,297.3L199.9,297.5L199.9,301.5L209.3,313.6L217.4,318.5L221.5,318.8L221.5,318.9L214.2,318.8L187.0,340.7L181.3,335.6L179.3,331.3L181.0,326.2L175.3,321.2Z","cx":189,"cy":315.8},{"n":"Catoosa","pop":68940,"g":13,"t":24,"d":"M48.3,6.5L80.2,6.7L75.2,22.4L70.8,23.3L70.7,29.4L62.7,29.2L61.4,36.2L55.0,35.2L55.2,24.3L48.0,24.2Z","cx":62.5,"cy":17.8},{"n":"Cobb","pop":787538,"g":383,"t":563,"d":"M105.5,130.1L114.3,130.4L141.3,131.2L143.3,139.3L146.1,143.0L142.8,148.8L137.9,153.4L138.7,156.1L135.4,164.6L123.1,175.8L118.0,167.4L106.7,167.1L106.9,148.0L105.3,148.0Z","cx":123.5,"cy":149},{"n":"Chattooga","pop":25306,"g":4,"t":4,"d":"M18.2,59.7L65.0,60.7L56.7,81.1L39.3,89.7L33.1,101.0L24.6,100.8L19.6,68.5Z","cx":38.3,"cy":75.7},{"n":"Cook","pop":17984,"g":5,"t":5,"d":"M242.8,503.7L249.0,503.8L251.9,500.6L251.5,505.2L257.7,513.0L263.6,514.9L263.6,522.1L266.9,525.3L264.8,532.0L269.8,539.4L268.2,544.3L247.4,543.8L238.6,540.7L235.7,537.5L239.9,523.9L243.2,520.1Z","cx":252.4,"cy":527.3},{"n":"Montgomery","pop":8566,"g":0,"t":0,"d":"M369.3,364.0L366.1,372.3L365.8,382.4L361.2,416.2L360.4,419.0L354.2,417.7L353.7,414.5L347.9,410.3L346.6,400.1L344.5,394.1L344.8,384.2L341.9,379.0L341.0,371.8L341.8,370.1Z","cx":355.1,"cy":388.6},{"n":"Brooks","pop":16344,"g":0,"t":0,"d":"M216.9,542.9L235.7,543.5L235.7,537.5L238.6,540.7L247.4,543.8L252.8,555.0L251.5,561.0L259.5,563.8L261.6,569.5L253.2,573.1L250.3,572.7L249.5,579.8L246.1,581.6L251.5,590.2L260.3,594.3L261.2,597.2L231.5,595.3L216.0,594.4Z","cx":235.1,"cy":569.6},{"n":"Chatham","pop":307336,"g":121,"t":197,"d":"M486.2,397.1L508.4,377.5L514.2,378.9L517.6,383.9L516.0,387.0L518.3,394.1L527.0,397.9L531.5,395.8L540.7,403.9L544.5,404.2L549.4,405.5L547.6,413.0L541.9,416.5L537.7,414.9L535.4,420.5L539.5,421.3L533.1,428.5L524.4,426.0L523.3,432.6L527.8,433.7L524.3,440.7L517.4,447.1L514.5,446.7L512.3,441.6L511.7,434.6L516.2,429.1L508.5,420.2L501.1,422.0L496.8,410.1L489.2,403.6Z","cx":516.4,"cy":409},{"n":"Clay","pop":2815,"g":0,"t":0,"d":"M57.2,440.9L63.0,442.2L76.6,441.5L76.1,450.3L78.0,463.1L92.5,463.1L91.9,479.3L78.2,478.7L67.8,480.9L65.8,476.7L64.7,462.7L57.0,452.5L57.2,443.3Z","cx":73.6,"cy":462.2},{"n":"Muscogee","pop":201830,"g":85,"t":124,"d":"M108.0,332.7L111.3,335.4L107.9,341.5L104.6,343.0L99.6,354.7L86.4,355.9L79.0,360.5L74.9,360.2L77.0,354.2L73.4,349.9L72.7,342.2L70.7,337.8L63.8,328.9L83.9,329.3L83.9,332.5Z","cx":87.4,"cy":342.5},{"n":"Worth","pop":20262,"g":3,"t":4,"d":"M194.0,433.1L204.8,435.3L209.7,439.2L210.1,463.6L219.2,463.8L227.0,471.1L226.6,503.2L186.7,502.5L186.8,487.7L187.3,463.2L184.8,459.8L183.2,450.8L188.2,444.2L185.8,439.3L189.5,439.1Z","cx":203.9,"cy":473.4},{"n":"Brantley","pop":18795,"g":1,"t":1,"d":"M385.4,516.9L395.8,519.0L401.2,516.3L401.2,512.8L404.9,510.3L417.3,509.2L418.9,505.0L415.6,502.5L413.0,496.3L426.8,499.8L440.8,497.3L449.2,501.7L445.4,519.1L445.4,523.5L439.3,528.0L436.8,533.3L428.1,533.8L426.1,540.2L411.5,536.7L409.1,545.4L403.3,545.5L394.4,535.6L394.2,524.0L385.5,521.2Z","cx":420.5,"cy":520.1},{"n":"Putnam","pop":23383,"g":6,"t":8,"d":"M240.8,218.3L269.2,211.6L273.7,220.4L273.3,223.0L278.5,223.6L282.6,229.0L284.7,235.1L272.5,242.0L270.1,251.7L259.9,252.7L252.6,252.0L239.1,253.9L240.0,223.7Z","cx":258.7,"cy":233.5},{"n":"Stephens","pop":27498,"g":7,"t":9,"d":"M248.8,76.5L259.6,50.2L262.4,48.6L274.5,58.8L281.3,59.6L288.5,68.9L280.5,76.9L258.5,77.9L255.7,79.2Z","cx":267.6,"cy":66.7},{"n":"Banks","pop":20318,"g":0,"t":1,"d":"M231.6,83.1L240.4,75.0L248.8,76.5L255.7,79.2L257.7,83.5L256.5,97.7L262.5,106.3L260.5,111.3L255.3,114.9L246.4,106.2L237.6,107.5L230.8,101.6L227.6,98.1L225.6,92.1L227.2,87.4Z","cx":244.6,"cy":93.8},{"n":"Harris","pop":36929,"g":6,"t":6,"d":"M52.5,293.2L89.7,294.0L89.7,293.4L101.9,294.0L107.6,297.4L108.8,299.4L108.0,332.7L83.9,332.5L83.9,329.3L63.8,328.9L61.5,323.8L58.8,309.3L59.7,306.4L54.4,301.1L56.1,297.0Z","cx":84,"cy":311.9},{"n":"Terrell","pop":8698,"g":1,"t":2,"d":"M118.2,422.8L134.7,423.0L136.0,416.5L147.8,429.3L153.2,430.5L156.9,435.5L156.8,440.6L153.9,440.5L152.6,453.1L152.5,463.4L134.7,463.3L123.5,463.3L124.8,455.8L121.2,444.3L117.5,442.8Z","cx":136.6,"cy":442.4},{"n":"Oglethorpe","pop":16172,"g":0,"t":0,"d":"M269.5,162.3L273.5,154.6L269.8,149.5L271.4,141.8L275.9,141.5L286.7,135.1L295.2,139.4L303.3,135.6L306.9,139.4L315.8,143.7L325.5,145.3L323.9,148.2L314.6,152.1L309.4,160.8L307.0,162.0L302.2,171.2L306.3,177.6L301.1,183.0L295.4,180.1L287.3,182.3L269.1,173.9L266.3,167.2Z","cx":291.4,"cy":158},{"n":"Wilcox","pop":8904,"g":1,"t":1,"d":"M231.7,408.7L232.1,396.5L251.8,396.6L253.9,394.5L260.5,395.8L263.0,398.3L267.9,401.9L266.7,405.7L271.7,419.1L275.8,421.2L278.3,426.0L281.6,433.1L277.9,433.6L246.5,433.3L231.6,432.4Z","cx":252.3,"cy":416.3},{"n":"Treutlen","pop":6420,"g":1,"t":1,"d":"M341.6,342.7L360.1,345.4L372.0,352.2L369.3,364.0L341.8,370.1L341.0,371.8L333.6,370.4L330.3,367.7L336.4,355.7L337.6,349.9L342.1,348.7Z","cx":351.1,"cy":357.4}]};
+const $ = s => document.querySelector(s);
+const fmt = n => n.toLocaleString('en-US');
+const rate = c => c.t / c.pop * 1e5;
+const grp = c => c.t===0?0:c.t===1?1:2;
+const GC=['#003359','#8b949a','#ffffff'];
+const bands=[
+  {lab:'None', test:r=>r===0, col:'#002240'},
+  {lab:'1 to 19.9', test:r=>r>0&&r<20, col:'#ffffff'},
+  {lab:'20 to 39.9', test:r=>r>=20&&r<40, col:'#b7c2cc'},
+  {lab:'40 to 59.9', test:r=>r>=40&&r<60, col:'#7f93a5'},
+  {lab:'60 or more', test:r=>r>=60, col:'#003359'}
+];
+const GINFO=[['Counties with no dentist','164,375 residents · 1.5% of Georgians'],['Counties with one dentist','204,939 residents · 1.8% of Georgians'],['Counties with two or more dentists','10,811,564 residents · 96.7% of Georgians']];
+let view='none', group=0, selected=null;
+const svg=$('#map'); svg.setAttribute('viewBox',`0 0 ${GEO.W} ${GEO.H}`);
+const NS='http://www.w3.org/2000/svg';
+const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+const g=el('g',{}); svg.appendChild(g);
+const els=new Map();
+GEO.counties.forEach(c=>{
+  const p=el('path',{d:c.d,class:'c',tabindex:0,'aria-label':`${c.n} County, ${c.t} dentists`});
+  p.addEventListener('mousemove',e=>showTip(c,e));
+  p.addEventListener('mouseleave',hideTip);
+  p.addEventListener('click',()=>select(c));
+  p.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(c);}});
+  g.appendChild(p); els.set(c.n,p);
+});
+const labs=el('g',{}); svg.appendChild(labs);
+svg.appendChild(el('path',{d:GEO.outline,class:'outline'}));
+[['Richmond','DCG Augusta',true],['Chatham','DCG Savannah, 2028',false]].forEach(([n,label,right])=>{
+  const c=GEO.counties.find(x=>x.n===n);
+  svg.appendChild(el('image',{href:SHIELD,x:c.cx-7,y:c.cy-7.3,width:14,height:14.6,style:'pointer-events:none'}));
+  const t=el('text',{class:'pin',x:right?c.cx+10:c.cx-10,y:c.cy+3,'text-anchor':right?'start':'end'}); t.textContent=label; svg.appendChild(t);
+});
+function paint(){
+  labs.innerHTML='';
+  els.forEach((p,n)=>{
+    const c=GEO.counties.find(x=>x.n===n);
+    if(view==='none'){ p.style.fill=GC[grp(c)]; p.classList.toggle('dim', grp(c)!==group); }
+    else { p.style.fill=bands.find(k=>k.test(rate(c))).col; p.classList.remove('dim'); }
+  });
+  if(view==='none' && group<2){
+    GEO.counties.filter(c=>grp(c)===group).forEach(c=>{const t=el('text',{class:'cl',x:c.cx,y:c.cy+2.4});t.textContent=c.n.toUpperCase();labs.appendChild(t);});
+  }
+  const L = view==='none' ? [[GC[0],'No dentist'],[GC[1],'One dentist'],[GC[2],'Two or more']] : bands.map(k=>[k.col,k.lab]);
+  $('#legend').innerHTML=L.map(([c,l])=>`<span><i style="background:${c}"></i>${l}</span>`).join('')+'<span><img src="'+SHIELD+'" alt="" style="width:13px;height:13.5px;vertical-align:-2px;margin-right:6px">Dental College of Georgia</span>';
+  $('#maptitle').textContent = view==='none' ? GINFO[group][0] : 'Dentists per 100,000 residents';
+  $('#mapsub').textContent = view==='none' ? GINFO[group][1] : 'State rate 51.0 · national rate 60.4';
+  $('#v-none').setAttribute('aria-pressed',view==='none');
+  $('#v-rate').setAttribute('aria-pressed',view==='rate');
+}
+$('#v-none').onclick=()=>{view='none';paint();};
+$('#v-rate').onclick=()=>{view='rate';paint();};
+document.querySelectorAll('.seg button').forEach(b=>b.addEventListener('click',()=>{
+  group=+b.dataset.g; view='none';
+  document.querySelectorAll('.seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  paint(); renderList();
+}));
+
+const tip=$('#tip');
+function showTip(c,e){
+  const box=$('#mapbox').getBoundingClientRect();
+  tip.innerHTML=`<strong>${c.n} County</strong><dl><dt>Population</dt><dd>${fmt(c.pop)}</dd><dt>Dentists</dt><dd>${c.t}</dd><dt>General</dt><dd>${c.g}</dd><dt>Per 100,000</dt><dd>${rate(c).toFixed(1)}</dd></dl>`;
+  tip.hidden=false;
+  let x=e.clientX-box.left+14, y=e.clientY-box.top+14;
+  const w=tip.offsetWidth, h=tip.offsetHeight;
+  if(x+w>box.width) x=e.clientX-box.left-w-14;
+  if(y+h>box.height) y=e.clientY-box.top-h-14;
+  tip.style.left=Math.max(0,x)+'px'; tip.style.top=Math.max(0,y)+'px';
+}
+function hideTip(){tip.hidden=true;}
+
+function renderList(){
+  const rows=GEO.counties.filter(c=>grp(c)===group).sort((a,b)=> group===2 ? rate(a)-rate(b) : b.pop-a.pop);
+  const pop=rows.reduce((s,c)=>s+c.pop,0), t=rows.reduce((s,c)=>s+c.t,0);
+  $('#listtitle').textContent=GINFO[group][0];
+  $('#listsub').textContent=group===2?'Lowest supply first':'By population';
+  $('#tl tbody').innerHTML=rows.map(c=>`<tr data-n="${c.n}"><td>${c.n}</td><td class="r">${fmt(c.pop)}</td><td class="r">${c.t}</td><td class="r">${rate(c).toFixed(1)}</td></tr>`).join('')+
+    `<tr class="total"><td>${rows.length} counties</td><td class="r">${fmt(pop)}</td><td class="r">${fmt(t)}</td><td class="r">${(t/pop*1e5).toFixed(1)}</td></tr>`;
+  document.querySelectorAll('#tl tr[data-n]').forEach(tr=>tr.addEventListener('click',()=>select(GEO.counties.find(c=>c.n===tr.dataset.n))));
+  if(rows.length) select(rows[0]);
+}
+function select(c){
+  if(selected) els.get(selected.n).classList.remove('hl');
+  selected=c; els.get(c.n).classList.add('hl');
+  document.querySelectorAll('#tl tr[data-n]').forEach(tr=>tr.classList.toggle('sel',tr.dataset.n===c.n));
+  const r=rate(c);
+  const line=c.t===0?'No practicing dentist. Residents travel outside the county for any dental care.':`${r>=51?'Above':'Below'} the state rate of 51.0 per 100,000. About ${fmt(Math.round(c.pop/c.t))} residents per dentist.`;
+  $('#detail').innerHTML=`<h4>${c.n} County</h4><p>${line}</p>
+    <dl><dt>Population</dt><dd>${fmt(c.pop)}</dd><dt>Dentists</dt><dd>${c.t}</dd><dt>General</dt><dd>${c.g}</dd><dt>Per 100,000</dt><dd>${r.toFixed(1)}</dd></dl>`;
+}
+
+(function(){
+  const R=GEO.counties, P=R.reduce((s,c)=>s+c.pop,0), T=R.reduce((s,c)=>s+c.t,0);
+  const f=n=>R.find(c=>c.n===n);
+  const txt=(x,y,s,cls,anchor)=>{const t=el('text',{x,y,class:cls||''});if(anchor)t.setAttribute('text-anchor',anchor);t.textContent=s;return t;};
+  const NAVY='#003359', GREY='#8b949a', LIGHT='#c9ced4';
+  const lab=(pct,text,dark)=>`<span class="v ${pct>68?'in':''} ${dark?'dk':''}" style="left:${pct}%">${text}</span>`;
+
+
+  (function(){
+    const rows=[
+      ['All practicing dentists per 100,000','State report 2025; ADA 2023 national figure',51.0,60.4],
+      ['Dentists per 100,000, ADA profile','American Dental Association, 2024 data',55.1,59.5],
+      ['General dentists per 100,000','America\'s Health Rankings, 2025; Georgia 46th of 50',48.3,66.3]];
+    $('#usga').innerHTML=rows.map(([l,src,ga,us])=>`<div class="cmprow"><div><div class="name">${l}</div><div class="src">${src}</div></div>
+      <div class="pair"><div class="pr"><i style="width:${ga/70*100}%;background:${NAVY}"></i><b>Georgia ${ga.toFixed(1)}</b></div><div class="pr"><i style="width:${us/70*100}%;background:${LIGHT}"></i><b style="color:var(--text-3)">U.S. ${us.toFixed(1)}</b></div></div>
+      <div class="pct">${(ga/us*100).toFixed(0)}% of U.S.<small>gap ${(us-ga).toFixed(1)}</small></div></div>`).join('');
+    $('#usganote').textContent='To match the national rate of 60.4, Georgia would need about '+fmt(Math.round(60.4*P/1e5-T))+' more practicing dentists. Georgia today: 1 dentist per '+fmt(Math.round(P/T))+' residents; at the national rate, 1 per '+fmt(Math.round(1e5/60.4))+'.';
+  })();
+  (function(){
+    const rows=[['United States',32.9,'k'],['South Carolina',47.9,'lt'],['California',36.0,'lt'],['Tennessee',30.8,'lt'],['Texas',29.9,'lt'],['Alabama',24.3,'lt'],['North Carolina',23.0,'lt'],['Florida',18.7,'lt'],['Georgia',17.8,'']];
+    $('#hpsa').innerHTML=rows.map(([l,v,c])=>`<div class="hrow"><div class="l ${c==='lt'?'w':''}">${l}</div><div class="t"><div class="b ${c}" style="width:${v/50*100}%"></div>${lab(v/50*100,v.toFixed(1)+'%',c==='lt')}</div></div>`).join('');
+  })();
+
+  (function(){
+    const rows=[['Fulton County',Math.round(f('Fulton').pop/f('Fulton').t),'g'],['U.S. rate',Math.round(1e5/60.4),'g'],['Georgia',Math.round(P/T),''],['One-dentist counties, avg.',11386,''],['Lamar County',f('Lamar').pop,'']];
+    $('#ratio').innerHTML=rows.map(([l,v,c])=>`<div class="hrow"><div class="l">${l}</div><div class="t"><div class="b ${c}" style="width:${v/21000*100}%"></div>${lab(v/21000*100,'1 : '+fmt(v),c==='g')}</div></div>`).join('');
+  })();
+
+  (function(){
+    const metro=R.filter(c=>['Fulton','Gwinnett','Cobb','DeKalb'].includes(c.n)), big=R.filter(c=>c.pop>=1e5), other=R.filter(c=>c.pop<1e5);
+    const sets=[['Fulton, Gwinnett, Cobb, DeKalb',metro],['27 counties over 100,000 residents',big],['132 other counties',other]];
+    $('#share').innerHTML=sets.map(([l,a])=>{const d=a.reduce((q,c)=>q+c.t,0)/T*100, p=a.reduce((q,c)=>q+c.pop,0)/P*100;
+      return `<div class="cmprow" style="grid-template-columns:minmax(0,1fr)"><div class="name">${l}</div><div class="pair"><div class="pr"><i style="width:${d}%;background:${NAVY}"></i><b>${d.toFixed(0)}% of dentists</b></div><div class="pr"><i style="width:${p}%;background:${LIGHT}"></i><b style="color:var(--text-3)">${p.toFixed(0)}% of population</b></div></div></div>`;}).join('');
+  })();
+
+  (function(){
+    $('#dist').innerHTML=bands.map((k,i)=>{const n=R.filter(c=>k.test(rate(c))).length;
+      return `<div class="hrow"><div class="l w">${k.lab}</div><div class="t"><div class="b ${i===0||i===4?'':'g'}" style="width:${n/60*100}%"></div>${lab(n/60*100,n+' counties',!(i===0||i===4))}</div></div>`;}).join('');
+  })();
+
+  (function(){
+    const lt2=R.filter(c=>c.t<2), pp=lt2.reduce((q,c)=>q+c.pop,0)/P*100, dd=lt2.reduce((q,c)=>q+c.t,0)/T*100;
+    const w=(title,val,cap)=>`<div class="waffle"><h4>${title}</h4><div class="g">${Array.from({length:100},(_,i)=>`<i class="${i<Math.max(1,Math.round(val))?'on':''}"></i>`).join('')}</div><p>${cap}</p></div>`;
+    $('#waffle').innerHTML=w('Population',pp,pp.toFixed(1)+'% of Georgians live there')+w('Dentists',dd,dd.toFixed(1)+'% of dentists practice there');
+  })();
+
+  (function(){
+    const one=R.filter(c=>c.t===1).sort((a,b)=>b.pop-a.pop), max=22000, ref=Math.round(P/T);
+    $('#onebars').innerHTML=one.map(c=>`<div class="hrow"><div class="l">${c.n}</div><div class="t"><div class="b" style="width:${c.pop/max*100}%"></div><span class="ref" style="left:${ref/max*100}%"></span>${lab(c.pop/max*100,fmt(c.pop),false)}</div></div>`).join('')
+      +`<div class="hrow"><div class="l"></div><div class="t" style="height:auto"><span class="sub" style="font-size:13px">Residents per dentist. Dashed line: statewide, 1 dentist per ${fmt(ref)} residents.</span></div></div>`;
+  })();
+  (function(){
+    const d=[[2015,19],[2017,23],[2019,21],[2021,22],[2025,21]];
+    const x0=40,x1=500,y0=150,ymax=25;
+    const xs=y=>x0+(y-2015)/10*(x1-x0), ys=v=>y0-v/ymax*120;
+    let h='';
+    [0,10,20].forEach(v=>h+=`<line x1="${x0-6}" x2="${x1+6}" y1="${ys(v)}" y2="${ys(v)}" stroke="#e3e3e8"/><text x="${x0-12}" y="${ys(v)+4}" text-anchor="end">${v}</text>`);
+    h+=`<polyline fill="none" stroke="#003359" stroke-width="2.5" stroke-linejoin="round" points="${d.map(([y,v])=>xs(y)+','+ys(v)).join(' ')}"/>`;
+    d.forEach(([y,v])=>{h+=`<circle cx="${xs(y)}" cy="${ys(v)}" r="5" fill="#fff" stroke="#003359" stroke-width="2.5"/><text class="v" x="${xs(y)}" y="${ys(v)-13}" text-anchor="middle">${v}</text><text x="${xs(y)}" y="174" text-anchor="middle">${y}</text>`;});
+    $('#trend').innerHTML=h;
+  })();
+})();
+
+paint(); renderList();
+</script>
+
+</body>
+</html>
